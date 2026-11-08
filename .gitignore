@@ -1,0 +1,23 @@
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Node (if added later)
+node_modules/
+npm-debug.log
+
+# Temp
+*.tmp
+*.bak
+
+# Full-resolution headshot source — optimized profile.webp/.jpg ship instead
+profile-source.png
+
+# Scratch: content for the separate GitHub profile repo, not part of the site
+github-profile-README.md

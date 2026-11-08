@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="description" content="Bhargavi Gudisa — Software Engineer building cloud infrastructure with Terraform, Docker and GCP, plus AI quality evaluation systems. 5 years across the US and India.">
+<meta name="author" content="Bhargavi Gudisa">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#09090B" media="(prefers-color-scheme: dark)">
+<title>Bhargavi Gudisa — Software Engineer, Cloud Infrastructure &amp; AI Quality</title>
+<link rel="canonical" href="https://bhargavigudisa.github.io/">
+
+<!-- Icons -->
+<link rel="icon" href="./favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+
+<!-- Link preview (LinkedIn, Slack, iMessage, email) -->
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Bhargavi Gudisa">
+<meta property="og:title" content="Bhargavi Gudisa — Software Engineer, Cloud Infrastructure &amp; AI Quality">
+<meta property="og:description" content="Infrastructure as code, containerized pipelines, and AI quality systems. Terraform, Docker, GCP and Python across 5 years in the US and India.">
+<meta property="og:url" content="https://bhargavigudisa.github.io/">
+<meta property="og:image" content="https://bhargavigudisa.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bhargavi Gudisa — Software Engineer, Cloud Infrastructure and AI Quality">
+<meta property="profile:first_name" content="Bhargavi">
+<meta property="profile:last_name" content="Gudisa">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bhargavi Gudisa — Software Engineer, Cloud Infrastructure &amp; AI Quality">
+<meta name="twitter:description" content="Infrastructure as code, containerized pipelines, and AI quality systems. Terraform, Docker, GCP and Python.">
+<meta name="twitter:image" content="https://bhargavigudisa.github.io/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ─── TOKENS (light-first per ui-ux-pro-max database) ─── */
+:root {
+  --bg:   #FAFAFA;
+  --bg2:  #F4F4F5;
+  --sf:   #FFFFFF;
+  --bd:   #E4E4E7;
+  --bdh:  #A1A1AA;
+  --t:    #09090B;
+  --t2:   #52525B;
+  --t3:   #A1A1AA;
+  --ac:   #2563EB;
+  --acl:  #1D4ED8;
+  --acb:  rgba(37,99,235,.07);
+  --act:  #2563EB;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg:   #09090B;
+  --bg2:  #18181B;
+  --sf:   #18181B;
+  --bd:   #27272A;
+  --bdh:  #52525B;
+  --t:    #FAFAFA;
+  --t2:   #A1A1AA;
+  --t3:   #52525B;
+  --ac:   #3B82F6;
+  --acl:  #2563EB;
+  --acb:  rgba(59,130,246,.1);
+  --act:  #93C5FD;
+  color-scheme: dark;
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#09090B;--bg2:#18181B;--sf:#18181B;
+    --bd:#27272A;--bdh:#52525B;
+    --t:#FAFAFA;--t2:#A1A1AA;--t3:#52525B;
+    --ac:#3B82F6;--acl:#2563EB;--acb:rgba(59,130,246,.1);--act:#93C5FD;
+    color-scheme:dark;
+  }
+}
+
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg);overflow-x:clip}
+body{
+  font-family:'Space Grotesk',system-ui,sans-serif;
+  background:var(--bg);color:var(--t);
+  line-height:1.65;overflow-x:clip;
+}
+/* Lenis owns scrolling once it initialises */
+html.lenis,html.lenis body{height:auto}
+html.lenis-smooth{scroll-behavior:auto!important}
+html.lenis-stopped{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+h1,h2,h3,h4{font-family:'Archivo',sans-serif;line-height:1.1;text-wrap:balance}
+
+.c{max-width:1140px;margin:0 auto;padding-inline:2rem}
+@media(max-width:540px){.c{padding-inline:1.25rem}}
+
+/* ─── NAV ─── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(250,250,250,.72);
+  -webkit-backdrop-filter:blur(20px) saturate(1.8);
+  backdrop-filter:blur(20px) saturate(1.8);
+  border-bottom:1px solid rgba(0,0,0,.07);
+  transition:background .2s;
+}
+[data-theme="dark"] #nav{background:rgba(9,9,11,.72);border-bottom-color:rgba(255,255,255,.07)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) #nav{background:rgba(9,9,11,.72);border-bottom-color:rgba(255,255,255,.07)}}
+.nav-i{
+  display:flex;align-items:center;justify-content:space-between;
+  height:60px;gap:1rem;
+}
+.logo{
+  font-family:'Archivo',sans-serif;font-weight:900;
+  font-size:1.1rem;letter-spacing:-.03em;color:var(--t);
+}
+.logo span{color:var(--ac)}
+.nav-links{display:flex;gap:.1rem;align-items:center}
+.nav-links a{
+  font-size:.82rem;font-weight:500;color:var(--t3);
+  padding:.35rem .65rem;border-radius:4px;
+  transition:color .15s,background .15s;
+  letter-spacing:.01em;
+}
+.nav-links a:hover,.nav-links a.on{color:var(--t);background:var(--bg2)}
+.nav-r{display:flex;gap:.6rem;align-items:center}
+#ttog{
+  width:32px;height:32px;border:1px solid var(--bd);border-radius:4px;
+  background:transparent;color:var(--t2);cursor:pointer;font-size:.85rem;
+  display:flex;align-items:center;justify-content:center;transition:border-color .15s;
+}
+#ttog:hover{border-color:var(--bdh)}
+#hbg{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:6px;border:none;background:transparent}
+#hbg span{display:block;width:18px;height:1.5px;background:var(--t2);border-radius:1px;transition:all .25s}
+@media(max-width:768px){.nav-links{display:none}#hbg{display:flex}}
+
+#mnav{
+  display:none;position:fixed;inset:60px 0 0;
+  background:var(--bg);z-index:99;
+  padding:1.5rem 1.25rem;border-top:1px solid var(--bd);
+}
+#mnav.open{display:block}
+#mnav li{border-bottom:1px solid var(--bd)}
+#mnav a{display:block;padding:.85rem 0;font-weight:500;color:var(--t2);transition:color .15s}
+#mnav a:hover{color:var(--t)}
+
+/* ─── HERO ─── */
+#hero{
+  padding-top:7.5rem;padding-bottom:5.5rem;
+  border-bottom:1px solid var(--bd);
+}
+.hero-g{
+  display:grid;grid-template-columns:1fr 340px;
+  gap:5rem;align-items:center;
+}
+/* availability pill */
+.hero-status{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;font-weight:500;color:var(--t2);
+  text-transform:uppercase;letter-spacing:.1em;
+  padding:.3rem .7rem .3rem .55rem;
+  border:1px solid var(--bd);border-radius:100px;
+  background:var(--sf);margin-bottom:1.75rem;
+}
+.hero-status .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#30D158;position:relative;flex-shrink:0;
+}
+.hero-status .dot::after{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  background:#30D158;animation:pulse 2.4s ease-out infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(1);opacity:.7}
+  70%{transform:scale(3);opacity:0}
+  100%{transform:scale(3);opacity:0}
+}
+@media(prefers-reduced-motion:reduce){.hero-status .dot::after{animation:none}}
+.hero-name{
+  font-family:'Archivo',sans-serif;font-weight:900;
+  font-size:clamp(3.1rem,7.5vw,6rem);
+  letter-spacing:-.05em;line-height:.9;
+  color:var(--t);margin-bottom:1.5rem;
+}
+.hero-name .char{display:inline-block}
+/* rule + role line under the name */
+.hero-role{
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:1.75rem;
+}
+.hero-role::before{
+  content:'';height:1px;width:48px;flex-shrink:0;
+  background:var(--t);
+}
+.hero-role span{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.74rem;font-weight:500;color:var(--t);
+  text-transform:uppercase;letter-spacing:.1em;
+}
+.hero-desc{
+  font-size:1.05rem;color:var(--t2);max-width:470px;
+  line-height:1.7;margin-bottom:2rem;font-weight:400;
+}
+.hero-desc strong{color:var(--t);font-weight:600}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.65rem;margin-bottom:2.5rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.35rem;
+  padding:.6rem 1.3rem;border-radius:5px;
+  font-family:'Space Grotesk',sans-serif;font-size:.875rem;
+  font-weight:600;transition:all .15s;cursor:pointer;border:none;
+}
+.bp{background:var(--t);color:var(--bg)}
+.bp:hover{opacity:.85}
+.bo{background:var(--bg);color:var(--t);border:1px solid var(--bd)}
+.bo:hover{border-color:var(--bdh);background:var(--bg2)}
+.hero-meta{
+  display:flex;gap:2rem;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  color:var(--t3);letter-spacing:.05em;text-transform:uppercase;
+}
+.hero-meta a{color:var(--ac);transition:opacity .15s}
+.hero-meta a:hover{opacity:.7}
+
+/* Hero photo */
+.hero-ph{position:relative}
+.hero-img{
+  position:relative;
+  aspect-ratio:4/5;
+  background:var(--bg2);
+  overflow:hidden;
+  border:1px solid var(--bd);
+}
+.hero-img img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:top center;
+  display:block;
+}
+/* thin accent line on photo */
+.hero-img::after{
+  content:'';position:absolute;
+  left:0;bottom:0;right:0;height:3px;
+  background:var(--ac);
+}
+.ph-cap{
+  display:flex;justify-content:space-between;gap:1rem;
+  margin-top:.7rem;
+  font-family:'JetBrains Mono',monospace;font-size:.66rem;
+  color:var(--t3);text-transform:uppercase;letter-spacing:.09em;
+}
+
+@media(max-width:900px){
+  .hero-g{grid-template-columns:1fr;gap:2.5rem}
+  .hero-ph{max-width:250px}
+  #hero{padding-top:6rem;padding-bottom:3.5rem}
+}
+
+/* ─── STAT STRIP ─── */
+#stats{padding:2rem 0;border-bottom:1px solid var(--bd)}
+.stat-row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;
+}
+.stat-cell{
+  padding:1.25rem 2rem;
+  border-right:1px solid var(--bd);
+}
+.stat-cell:last-child{border-right:none}
+.stat-n{
+  font-family:'Archivo',sans-serif;font-weight:900;
+  font-size:2.1rem;letter-spacing:-.04em;color:var(--t);
+  line-height:1;font-variant-numeric:tabular-nums;
+}
+.stat-n sup{font-size:1.1rem;font-weight:700}
+.stat-l{font-size:.75rem;color:var(--t3);margin-top:.3rem;font-weight:400}
+@media(max-width:720px){
+  .stat-row{grid-template-columns:1fr 1fr;gap:0}
+  .stat-cell:nth-child(2){border-right:none}
+  .stat-cell{border-bottom:1px solid var(--bd)}
+  .stat-cell:nth-last-child(-n+2){border-bottom:none}
+  .stat-cell:nth-child(odd){border-right:1px solid var(--bd)}
+}
+
+/* ─── SECTION BASE ─── */
+.sec{padding-block:5.5rem;border-bottom:1px solid var(--bd)}
+.sec:last-of-type{border-bottom:none}
+.sec-hd{margin-bottom:3rem}
+.sec-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.7rem;font-weight:500;color:var(--t3);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;
+}
+.sec-title{
+  font-family:'Archivo',sans-serif;font-weight:900;
+  font-size:clamp(1.75rem,3.5vw,2.5rem);
+  letter-spacing:-.03em;color:var(--t);
+}
+
+/* ─── PROJECTS ─── */
+.proj-list{display:flex;flex-direction:column}
+.proj-item{
+  border-top:1px solid var(--bd);
+  padding:1.75rem 0;
+  display:grid;
+  grid-template-columns:3rem 1fr;
+  gap:1.5rem;align-items:start;
+}
+.proj-item:last-child{border-bottom:1px solid var(--bd)}
+.proj-num{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  font-weight:500;color:var(--t3);letter-spacing:.05em;
+  padding-top:.35rem;
+}
+.proj-body{}
+.proj-top{
+  display:flex;align-items:baseline;gap:1rem;
+  flex-wrap:wrap;margin-bottom:.6rem;
+}
+h3{font-size:inherit;font-weight:inherit;margin:0}
+.proj-title{
+  font-family:'Archivo',sans-serif;font-weight:700;
+  font-size:1.15rem;letter-spacing:-.02em;color:var(--t);
+  transition:color .15s;
+}
+.proj-client{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--t3);letter-spacing:.04em;
+}
+.proj-desc{
+  font-size:.88rem;color:var(--t2);line-height:1.65;
+  max-width:620px;margin-bottom:.85rem;
+}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  padding:.2rem .55rem;border-radius:3px;
+  background:var(--bg2);border:1px solid var(--bd);
+  color:var(--t3);letter-spacing:.02em;
+}
+@media(max-width:600px){
+  .proj-item{grid-template-columns:2.5rem 1fr;gap:1rem}
+}
+
+/* ─── CASE STUDY (expandable) ─── */
+.proj-links{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:.1rem}
+.proj-link{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  letter-spacing:.04em;text-transform:uppercase;
+  color:var(--t2);text-decoration:none;
+  border-bottom:1px solid var(--bd);padding-bottom:2px;
+  transition:color .2s ease,border-color .2s ease;
+}
+.proj-link:hover,.proj-link:focus-visible{color:var(--ac);border-color:var(--ac)}
+.proj-private{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--t3);
+}
+.proj-toggle{
+  margin-top:1.1rem;
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:transparent;border:1px solid var(--bd);
+  border-radius:4px;padding:.4rem .8rem;cursor:pointer;
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  text-transform:uppercase;letter-spacing:.09em;
+  color:var(--t2);transition:all .15s;
+}
+.proj-toggle:hover{border-color:var(--bdh);color:var(--t);background:var(--bg2)}
+.proj-toggle .pt-ico{
+  font-size:.85rem;line-height:1;transition:transform .25s ease;
+  display:inline-block;
+}
+.proj-item.open .proj-toggle{border-color:var(--ac);color:var(--ac)}
+.proj-item.open .proj-toggle .pt-ico{transform:rotate(45deg)}
+.proj-item.open .proj-title{color:var(--ac)}
+
+.proj-panel{overflow:hidden;height:0;opacity:0}
+.cs{
+  padding-top:1.75rem;margin-top:1.5rem;
+  border-top:1px dashed var(--bd);
+  display:flex;flex-direction:column;gap:1.75rem;
+}
+.cs-block{}
+.cs-h{
+  font-family:'JetBrains Mono',monospace;font-size:.66rem;
+  font-weight:500;color:var(--t3);
+  text-transform:uppercase;letter-spacing:.13em;
+  margin-bottom:.6rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.cs-h::after{content:'';flex:1;height:1px;background:var(--bd)}
+.cs-p{font-size:.88rem;color:var(--t2);line-height:1.75;max-width:680px}
+.cs-p strong{color:var(--t);font-weight:600}
+.cs-p + .cs-p{margin-top:.7rem}
+.cs-ul{display:flex;flex-direction:column;gap:.45rem;max-width:680px}
+.cs-ul li{
+  font-size:.86rem;color:var(--t2);line-height:1.7;
+  padding-left:1.1rem;position:relative;
+}
+.cs-ul li::before{
+  content:'→';position:absolute;left:0;color:var(--t3);
+  font-size:.78rem;top:.06em;
+}
+.cs-ul li strong{color:var(--t);font-weight:600}
+/* outcome chips */
+.cs-out{display:flex;flex-wrap:wrap;gap:.6rem}
+.oc{
+  border:1px solid var(--bd);border-radius:4px;
+  padding:.6rem .85rem;background:var(--sf);
+  min-width:118px;
+}
+.oc-n{
+  font-family:'Archivo',sans-serif;font-weight:900;
+  font-size:1.35rem;letter-spacing:-.03em;color:var(--ac);
+  line-height:1;font-variant-numeric:tabular-nums;
+}
+.oc-l{font-size:.72rem;color:var(--t2);margin-top:.3rem;line-height:1.4}
+
+/* ─── ARCHITECTURE DIAGRAMS ─── */
+.dgm{
+  border:1px solid var(--bd);border-radius:6px;
+  background:var(--sf);padding:1.25rem;
+  overflow-x:auto;
+}
+.dgm svg{display:block;min-width:620px;width:100%;height:auto}
+.dgm-box{fill:var(--bg2);stroke:var(--bd);stroke-width:1}
+.dgm-box-ac{fill:var(--acb);stroke:var(--ac);stroke-width:1}
+.dgm-t{
+  font-family:'Archivo',sans-serif;font-size:12.5px;font-weight:700;
+  fill:var(--t);letter-spacing:-.01em;
+}
+.dgm-s{
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  fill:var(--t3);letter-spacing:.04em;
+}
+.dgm-ln{stroke:var(--bdh);stroke-width:1.25;fill:none}
+.dgm-dash{stroke:var(--ac);stroke-width:1.25;fill:none;stroke-dasharray:4 4}
+.dgm-wrap{fill:none;stroke:var(--ac);stroke-width:1;stroke-dasharray:4 4;opacity:.65}
+.dgm-lbl{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  fill:var(--ac);letter-spacing:.07em;
+}
+.dgm-cap{
+  font-family:'JetBrains Mono',monospace;font-size:.66rem;
+  color:var(--t3);letter-spacing:.06em;margin-top:.75rem;
+  text-transform:uppercase;
+}
+
+/* ─── CODE / TERMINAL ARTIFACTS ─── */
+.art{
+  border:1px solid var(--bd);border-radius:6px;
+  overflow:hidden;background:#0B0B0E;
+}
+.art-bar{
+  display:flex;align-items:center;gap:.4rem;
+  padding:.55rem .8rem;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  background:#131317;
+}
+.art-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.art-name{
+  margin-left:.6rem;
+  font-family:'JetBrains Mono',monospace;font-size:.66rem;
+  color:#8A8A94;letter-spacing:.05em;
+}
+.art pre{margin:0;padding:1rem 1.1rem;overflow-x:auto}
+.art code{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.715rem;line-height:1.8;
+  color:#D8D8DE;white-space:pre;display:block;
+}
+.art .cm{color:#6E6E7A;font-style:italic}
+.art .kw{color:#C87DF5}
+.art .st{color:#4ED17F}
+.art .fn{color:#5AC8FA}
+.art .nu{color:#FFA94D}
+.art .pr{color:#4ED17F;user-select:none}
+.art .ok{color:#4ED17F}
+.art .dm{color:#6E6E7A}
+.art .hl{color:#FFD60A}
+@media(max-width:600px){.art code{font-size:.66rem}}
+
+/* ─── ABOUT ─── */
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-t p{font-size:.975rem;color:var(--t2);line-height:1.8;margin-bottom:1rem}
+.about-t p:last-child{margin-bottom:0}
+.about-t p strong{color:var(--t);font-weight:600}
+.about-r{}
+.fact-list{display:flex;flex-direction:column;gap:0}
+.fact{
+  display:grid;grid-template-columns:120px 1fr;gap:1rem;
+  padding:.85rem 0;border-bottom:1px solid var(--bd);
+  align-items:baseline;
+}
+.fact:first-child{border-top:1px solid var(--bd)}
+.fact-k{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--t3);text-transform:uppercase;letter-spacing:.08em;font-weight:500;
+}
+.fact-v{font-size:.875rem;color:var(--t2);font-weight:400}
+.fact-v strong{color:var(--t);font-weight:600}
+@media(max-width:768px){.about-g{grid-template-columns:1fr;gap:3rem}}
+
+/* ─── SKILLS ─── */
+.skill-g{display:flex;flex-direction:column;gap:0}
+.skill-row{
+  display:grid;grid-template-columns:180px 1fr;
+  gap:2rem;padding:1.4rem 0;
+  border-bottom:1px solid var(--bd);
+  align-items:start;
+}
+.skill-row:first-child{border-top:1px solid var(--bd)}
+.skill-cat{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--t3);text-transform:uppercase;letter-spacing:.09em;
+  font-weight:500;padding-top:.1rem;
+}
+.skill-items{display:flex;flex-wrap:wrap;gap:.5rem}
+.sk{
+  font-size:.82rem;color:var(--t2);font-weight:400;
+  padding:.25rem .6rem;border-radius:3px;
+  border:1px solid var(--bd);background:transparent;
+  transition:all .15s;
+}
+.sk.hi{
+  color:var(--t);border-color:var(--bdh);
+  background:var(--bg2);font-weight:500;
+}
+@media(max-width:600px){
+  .skill-row{grid-template-columns:1fr;gap:.6rem}
+}
+
+/* ─── EXPERIENCE ─── */
+.exp-list{display:flex;flex-direction:column;gap:0}
+.exp-item{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:3rem;
+  padding:2.5rem 0;
+  border-bottom:1px solid var(--bd);
+}
+.exp-item:first-child{border-top:1px solid var(--bd)}
+.exp-meta{}
+.exp-date{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--t3);text-transform:uppercase;letter-spacing:.08em;
+  margin-bottom:.5rem;line-height:1.5;
+}
+.exp-co{
+  font-family:'Archivo',sans-serif;font-weight:700;
+  font-size:.95rem;color:var(--t);letter-spacing:-.01em;
+}
+.exp-body{}
+.exp-role{
+  font-family:'Archivo',sans-serif;font-weight:800;
+  font-size:1.2rem;letter-spacing:-.02em;color:var(--t);
+  margin-bottom:1rem;
+}
+.exp-ul{display:flex;flex-direction:column;gap:.4rem}
+.exp-ul li{
+  font-size:.875rem;color:var(--t2);line-height:1.65;
+  padding-left:1.1rem;position:relative;
+}
+.exp-ul li::before{
+  content:'—';position:absolute;left:0;
+  color:var(--t3);font-size:.75rem;top:.08em;
+}
+.exp-ul li strong{color:var(--t);font-weight:600}
+@media(max-width:768px){
+  .exp-item{grid-template-columns:1fr;gap:1rem}
+  .exp-meta{display:flex;gap:1rem;align-items:baseline;flex-wrap:wrap}
+}
+
+/* ─── METRICS ─── */
+.metrics-g{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;
+}
+.m-cell{
+  padding:2.5rem 1.5rem;
+  border-right:1px solid var(--bd);
+}
+.m-cell:last-child{border-right:none}
+.m-n{
+  font-family:'Archivo',sans-serif;font-weight:900;
+  font-size:3.5rem;letter-spacing:-.05em;line-height:1;
+  color:var(--t);margin-bottom:.5rem;
+  font-variant-numeric:tabular-nums;
+}
+.m-n span.u{font-size:2rem;font-weight:700}
+.m-l{font-size:.82rem;color:var(--t2);line-height:1.5;max-width:160px}
+
+.metrics-s{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;border-top:1px solid var(--bd);
+  margin-top:0;
+}
+.ms-cell{
+  padding:1.5rem;border-right:1px solid var(--bd);
+  display:flex;align-items:center;gap:1rem;
+}
+.ms-cell:last-child{border-right:none}
+.ms-n{
+  font-family:'Archivo',sans-serif;font-weight:900;
+  font-size:1.5rem;letter-spacing:-.03em;color:var(--ac);
+  white-space:nowrap;
+}
+.ms-l{font-size:.77rem;color:var(--t2);line-height:1.4}
+@media(max-width:900px){
+  .metrics-g{grid-template-columns:1fr 1fr}
+  .metrics-s{grid-template-columns:1fr 1fr}
+  .m-cell:nth-child(2){border-right:none}
+  .m-cell{border-bottom:1px solid var(--bd)}
+  .m-cell:nth-last-child(-n+2){border-bottom:none}
+  .m-cell:nth-child(odd){border-right:1px solid var(--bd)}
+  .ms-cell:nth-child(2){border-right:none}
+  .ms-cell{border-bottom:1px solid var(--bd)}
+  .ms-cell:nth-last-child(-n+2){border-bottom:none}
+  .ms-cell:nth-child(odd){border-right:1px solid var(--bd)}
+}
+
+/* ─── EDU ─── */
+.edu-list{display:flex;flex-direction:column}
+.edu-item{
+  display:grid;grid-template-columns:200px 1fr;
+  gap:3rem;padding:1.75rem 0;
+  border-bottom:1px solid var(--bd);
+}
+.edu-item:first-child{border-top:1px solid var(--bd)}
+.edu-year{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  color:var(--t3);text-transform:uppercase;letter-spacing:.08em;padding-top:.25rem;
+}
+.edu-info{}
+.edu-name{
+  font-family:'Archivo',sans-serif;font-weight:700;
+  font-size:1rem;letter-spacing:-.01em;color:var(--t);margin-bottom:.25rem;
+}
+.edu-org{font-size:.85rem;color:var(--t2)}
+.edu-org strong{color:var(--ac);font-weight:600}
+@media(max-width:600px){
+  .edu-item{grid-template-columns:1fr;gap:.5rem}
+  .edu-year{font-size:.65rem}
+}
+
+/* ─── CONTACT ─── */
+#contact{padding-block:5.5rem}
+.ct-g{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.ct-big-email{
+  font-family:'Archivo',sans-serif;font-weight:900;
+  font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.03em;
+  color:var(--t);margin-bottom:2rem;line-height:1.1;
+  word-break:break-all;display:block;text-decoration:none;
+  transition:color .2s ease;
+}
+.ct-big-email:hover,.ct-big-email:focus-visible{color:var(--ac)}
+.ct-note{
+  font-size:.8rem;color:var(--t3);line-height:1.6;margin-top:.1rem;
+}
+.ct-note a{color:var(--t2);text-decoration:underline;text-underline-offset:2px}
+.ct-note a:hover{color:var(--ac)}
+.ct-info{display:flex;flex-direction:column;gap:.85rem}
+.ct-row{
+  display:flex;gap:1rem;align-items:center;
+  font-size:.875rem;color:var(--t2);
+}
+.ct-key{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  color:var(--t3);text-transform:uppercase;letter-spacing:.08em;
+  width:70px;flex-shrink:0;
+}
+.ct-val{color:var(--t2);user-select:all}
+.ct-val a{color:var(--ac);transition:opacity .15s}
+.ct-val a:hover{opacity:.7}
+.ct-form{display:flex;flex-direction:column;gap:.85rem}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+@media(max-width:540px){.f2{grid-template-columns:1fr}}
+.fld label{display:block;font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:.4rem}
+.fld input,.fld textarea{
+  width:100%;background:var(--sf);border:1px solid var(--bd);
+  border-radius:4px;padding:.6rem .8rem;
+  font-family:'Space Grotesk',sans-serif;font-size:.9rem;color:var(--t);
+  outline:none;transition:border-color .15s;
+}
+.fld input:focus,.fld textarea:focus{border-color:var(--ac)}
+.fld textarea{min-height:100px;resize:vertical}
+.fs-msg{font-size:.8rem;color:var(--t3);display:none;margin-top:.25rem;line-height:1.5}
+.fs-msg.err{color:#DC2626}
+:root[data-theme="dark"] .fs-msg.err{color:#F87171}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .fs-msg.err{color:#F87171}}
+@media(max-width:768px){.ct-g{grid-template-columns:1fr;gap:3rem}}
+
+/* ─── FOOTER ─── */
+footer{padding-block:1.5rem;border-top:1px solid var(--bd);background:var(--bg)}
+.ft{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.ft-c{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--t3);text-transform:uppercase;letter-spacing:.08em}
+.ft-links{display:flex;gap:1.5rem}
+.ft-links a{font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);transition:color .15s}
+.ft-links a:hover{color:var(--ac)}
+
+/* ─── SCROLL ANIMATIONS ─── */
+/* Only hide pre-reveal content when scripting is available to show it again.
+   Without .js (JS disabled) the content renders normally; if GSAP itself fails
+   to load, the HAS_GSAP guard drops .js and these rules stop applying. */
+html.js .reveal{opacity:0;transform:translateY(12px)}
+html.js .hero-status,html.js .hero-role,html.js .hero-desc,
+html.js .hero-ctas,html.js .hero-meta{will-change:opacity,transform}
+
+/* ─── SCROLL PROGRESS ─── */
+#prog{
+  position:fixed;top:0;left:0;right:0;height:2px;z-index:101;
+  background:var(--ac);transform:scaleX(0);transform-origin:0 50%;
+  will-change:transform;
+}
+
+/* ─── BACK TO TOP ─── */
+#btt{
+  position:fixed;bottom:2rem;right:2rem;
+  width:36px;height:36px;border-radius:4px;
+  background:var(--t);color:var(--bg);
+  border:none;cursor:pointer;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+  z-index:50;
+}
+#btt.show{opacity:1;pointer-events:all}
+#btt:hover{opacity:.8}
+</style>
+
+<script>
+/* Runs before paint. The .reveal rule only hides content when scripting is
+   available to reveal it again, so a failed GSAP load or disabled JS can never
+   leave the page blank. See the HAS_GSAP guard at the bottom of this file. */
+document.documentElement.classList.add('js');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Bhargavi Gudisa",
+  "url": "https://bhargavigudisa.github.io/",
+  "image": "https://bhargavigudisa.github.io/og-image.jpg",
+  "jobTitle": "Software Engineer",
+  "description": "Software engineer working on cloud infrastructure, infrastructure as code, and AI quality systems.",
+  "email": "mailto:bhargavi4044g@gmail.com",
+  "telephone": "+1-561-987-0286",
+  "worksFor": { "@type": "Organization", "name": "Lumin Innovations" },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Florida Atlantic University",
+    "sameAs": "https://www.fau.edu/"
+  },
+  "address": { "@type": "PostalAddress", "addressCountry": "US" },
+  "knowsAbout": [
+    "Infrastructure as Code", "Terraform", "Docker", "Google Cloud Platform",
+    "Microsoft Azure", "Linux", "Python", "Bash", "T-SQL", "ETL",
+    "AI Quality Evaluation", "Data Governance"
+  ],
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "name": "Microsoft Certified: Azure Fundamentals (AZ-900)",
+    "credentialCategory": "certification",
+    "recognizedBy": { "@type": "Organization", "name": "Microsoft" }
+  },
+  "sameAs": [
+    "https://github.com/BhargaviGudisa",
+    "https://www.linkedin.com/in/bhargavi-gudisa-a2b05021b/"
+  ]
+}
+</script>
+</head>
+<body>
+
+<div id="prog" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="nav"><div class="c"><div class="nav-i">
+  <div class="logo" id="logo" role="button" tabindex="0">BG<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-r">
+    <button id="ttog" aria-label="Switch colour theme">◑</button>
+    <button id="hbg" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
+  </div>
+</div></div></nav>
+<div id="mnav"><ul>
+  <li><a href="#about">About</a></li>
+  <li><a href="#experience">Experience</a></li>
+  <li><a href="#skills">Skills</a></li>
+  <li><a href="#projects">Work</a></li>
+  <li><a href="#impact">Impact</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul></div>
+
+<!-- HERO -->
+<section id="hero"><div class="c"><div class="hero-g">
+  <div>
+    <div class="hero-status"><span class="dot"></span>Open to Software &amp; Cloud Engineering roles</div>
+    <h1 class="hero-name" id="hero-name">Bhargavi<br>Gudisa</h1>
+    <div class="hero-role"><span>Software Engineer — Cloud Infrastructure &amp; AI Quality</span></div>
+    <p class="hero-desc">
+      Building <strong>scalable cloud infrastructure</strong> and AI quality systems. 5 years working across GCP, Azure, and hybrid environments with Terraform, Docker, and Python.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn bp">Get in touch</a>
+      <a href="./Bhargavi-Gudisa-Resume.pdf" class="btn bo" download="Bhargavi-Gudisa-Resume.pdf">Download résumé ↓</a>
+    </div>
+    <div class="hero-meta">
+      <span>USA · Eastern</span>
+      <a href="https://github.com/BhargaviGudisa" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/bhargavi-gudisa-a2b05021b/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="hero-ph">
+    <div class="hero-img">
+      <picture>
+        <source type="image/webp"
+                srcset="./profile-sm.webp 340w, ./profile.webp 680w"
+                sizes="(max-width: 860px) 60vw, 340px">
+        <img src="./profile.jpg" alt="Bhargavi Gudisa" width="680" height="850"
+             loading="eager" fetchpriority="high" decoding="async">
+      </picture>
+    </div>
+    <div class="ph-cap"><span>Systems Engineer</span><span>Eastern Time</span></div>
+  </div>
+</div></div></section>
+
+<!-- STATS -->
+<div id="stats"><div class="c"><div class="stat-row">
+  <div class="stat-cell">
+    <div class="stat-n"><span class="cn" data-to="5">0</span><sup>+</sup></div>
+    <div class="stat-l">Years IT experience</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n"><span class="cn" data-to="5">0</span><sup>k+</sup></div>
+    <div class="stat-l">AI responses evaluated</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n"><span class="cn" data-to="98">0</span><sup>%</sup></div>
+    <div class="stat-l">Quality flagging accuracy</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n"><span class="cn" data-to="3">0</span><sup>+</sup></div>
+    <div class="stat-l">Cloud platforms</div>
+  </div>
+</div></div></div>
+
+<!-- ABOUT -->
+<section id="about" class="sec"><div class="c">
+  <div class="sec-hd reveal">
+    <div class="sec-label">Background</div>
+    <h2 class="sec-title">About</h2>
+  </div>
+  <div class="about-g">
+    <div class="about-t reveal">
+      <p>I’m a software engineer at <strong>Lumin Innovations</strong> with a background spanning cloud infrastructure, data governance, and AI quality systems. My work sits at the intersection of infrastructure automation and operational reliability — I design systems that are version-controlled, observable, and reproducible by default.</p>
+      <p>At Lumin I built Python and Bash ingestion pipelines containerized in Docker and provisioned GCP environments with Terraform. Before that, I designed layered GCP ingestion architectures at Florida Atlantic University and containerized QA frameworks at Wipro in India.</p>
+      <p>My philosophy: every infrastructure decision should be code, every data flow should be traceable, and every AI quality issue should have a root cause, not a workaround. I'm drawn to roles where systems reliability and data integrity are first-class concerns.</p>
+    </div>
+    <div class="reveal">
+      <div class="fact-list">
+        <div class="fact"><span class="fact-k">Role</span><span class="fact-v">Software Engineer, Lumin Innovations</span></div>
+        <div class="fact"><span class="fact-k">Education</span><span class="fact-v"><strong>M.S. CIS, FAU</strong> — GPA 3.86</span></div>
+        <div class="fact"><span class="fact-k">Focus</span><span class="fact-v">Cloud Infrastructure & AI Quality</span></div>
+        <div class="fact"><span class="fact-k">Stack</span><span class="fact-v">Python · Terraform · Docker · GCP</span></div>
+        <div class="fact"><span class="fact-k">Location</span><span class="fact-v">USA, Eastern Time</span></div>
+        <div class="fact"><span class="fact-k">Published</span><span class="fact-v">Fake news detection model — Springer</span></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sec"><div class="c">
+  <div class="sec-hd reveal">
+    <div class="sec-label">Career</div>
+    <h2 class="sec-title">Experience</h2>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">May 2025<br>Present</div>
+        <div class="exp-co">Lumin Innovations</div>
+      </div>
+      <div class="exp-body">
+        <h3 class="exp-role">Software Engineer</h3>
+        <ul class="exp-ul">
+          <li>Built Python + Bash ingestion application packaged in <strong>Docker</strong>, GCP storage and compute provisioned with <strong>Terraform</strong> — every Linux environment runs the same version-controlled build</li>
+          <li>Set up governance with owner-per-area and Jira-tracked reviews; automated Bash audits now route <strong>200+ stale entries/month</strong> to owners, cutting staleness by <strong>45%</strong></li>
+          <li>Built Python + Bash tools analyzing <strong>5,000+ AI-generated responses</strong>, flagging quality gaps at <strong>98% accuracy</strong></li>
+          <li>Designed root-cause separation process — content gaps vs. prompt-handling failures — reducing debugging time by <strong>30%</strong></li>
+          <li>Evaluated and integrated SaaS automation platforms (Workato, Make, n8n), replacing manual handoffs with automated triggers</li>
+          <li>Reported AI accuracy and adoption monthly via Tableau; improved response precision by <strong>25%</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Aug 2024<br>May 2025</div>
+        <div class="exp-co">Florida Atlantic University</div>
+      </div>
+      <div class="exp-body">
+        <h3 class="exp-role">Systems Analyst</h3>
+        <ul class="exp-ul">
+          <li>Designed layered GCP ingestion system using <strong>Cloud Functions + Terraform</strong> separating collection, processing, and storage</li>
+          <li>Deployed pipeline in Docker on Linux VMs; optimized Bash metadata extraction scripts to eliminate environment-specific failures</li>
+          <li>Built <strong>500+ case edge-case test dataset</strong> giving each release a repeatable, traceable test baseline</li>
+          <li>Fixed low-confidence knowledge articles — raised search success by <strong>18%</strong>, cut outdated entries by <strong>40%</strong>, saved ~15 hrs/week</li>
+          <li>Reduced policy-related escalations by <strong>22%</strong> through cross-team alignment workshops</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Jan 2021<br>Oct 2023</div>
+        <div class="exp-co">Wipro Limited</div>
+      </div>
+      <div class="exp-body">
+        <h3 class="exp-role">Project Engineer</h3>
+        <ul class="exp-ul">
+          <li>Containerized QA framework with <strong>Docker</strong> and extended Terraform configurations for GCP</li>
+          <li>Migrated data processing scripts to Bash on Linux servers, making them portable across environments</li>
+          <li>Reviewed chatbot replies as the human quality check, flagging inaccurate information to protect data integrity</li>
+          <li>Designed workflow logic for early AI tools; created knowledge-base checklist reducing documentation errors by <strong>15%</strong></li>
+          <li>Coordinated sprint planning in Jira and Asana across global teams; built Tableau dashboards for leadership</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec"><div class="c">
+  <div class="sec-hd reveal">
+    <div class="sec-label">Expertise</div>
+    <h2 class="sec-title">Skills</h2>
+  </div>
+  <div class="skill-g">
+    <div class="skill-row reveal">
+      <div class="skill-cat">Cloud &amp; Infra</div>
+      <div class="skill-items">
+        <span class="sk hi">Terraform</span><span class="sk hi">Docker</span><span class="sk hi">GCP</span>
+        <span class="sk hi">Microsoft Azure</span><span class="sk hi">Linux</span><span class="sk hi">Bash</span>
+        <span class="sk">Cloud Functions</span><span class="sk">Compute Engine</span>
+        <span class="sk">Azure Data Factory</span><span class="sk">Azure Synapse</span>
+        <span class="sk">Azure App Service</span><span class="sk">Git</span><span class="sk">GitHub</span>
+      </div>
+    </div>
+    <div class="skill-row reveal">
+      <div class="skill-cat">Languages</div>
+      <div class="skill-items">
+        <span class="sk hi">Python</span><span class="sk hi">T-SQL</span><span class="sk hi">Bash</span>
+        <span class="sk">C#</span><span class="sk">ASP.NET Core</span>
+        <span class="sk">JavaScript</span><span class="sk">Pandas</span>
+        <span class="sk">ETL Pipelines</span><span class="sk">Data Validation</span>
+      </div>
+    </div>
+    <div class="skill-row reveal">
+      <div class="skill-cat">Databases</div>
+      <div class="skill-items">
+        <span class="sk hi">Microsoft SQL Server</span><span class="sk hi">Azure SQL</span>
+        <span class="sk">Oracle PL/SQL</span><span class="sk">Entity Framework</span>
+        <span class="sk">Schema Design</span><span class="sk">Query Tuning</span>
+        <span class="sk">Power BI</span><span class="sk">Tableau</span><span class="sk">DAX</span>
+      </div>
+    </div>
+    <div class="skill-row reveal">
+      <div class="skill-cat">AI &amp; Integration</div>
+      <div class="skill-items">
+        <span class="sk hi">AI Quality Evaluation</span><span class="sk hi">Human-in-loop Review</span>
+        <span class="sk hi">Copilot Studio</span><span class="sk">Workato</span>
+        <span class="sk">Make</span><span class="sk">n8n</span><span class="sk">Power Automate</span>
+        <span class="sk">REST APIs</span><span class="sk">SharePoint Online</span>
+      </div>
+    </div>
+    <div class="skill-row reveal">
+      <div class="skill-cat">Delivery</div>
+      <div class="skill-items">
+        <span class="sk hi">SDLC</span><span class="sk hi">Agile</span>
+        <span class="sk">Jira</span><span class="sk">Asana</span>
+        <span class="sk">Code Reviews</span><span class="sk">Technical Docs</span>
+        <span class="sk">Test Planning</span><span class="sk">Knowledge Base Audits</span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sec"><div class="c">
+  <div class="sec-hd reveal">
+    <div class="sec-label">Selected work</div>
+    <h2 class="sec-title">Projects</h2>
+  </div>
+  <div class="proj-list">
+
+    <div class="proj-item reveal">
+      <div class="proj-num">01/</div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <h3 class="proj-title">GCP Ingestion Pipeline</h3>
+          <div class="proj-client">Lumin Innovations</div>
+        </div>
+        <p class="proj-desc">Python + Bash ingestion application packaged in Docker, GCP storage and compute provisioned with Terraform. Every Linux environment runs the same version-controlled build &mdash; no drift between dev and production.</p>
+        <div class="proj-tags">
+          <span class="tag">Python</span><span class="tag">Bash</span>
+          <span class="tag">Docker</span><span class="tag">Terraform</span><span class="tag">GCP</span>
+        </div>
+        <div class="proj-links">
+          <span class="proj-private">Internal — source not public</span>
+        </div>
+        <button class="proj-toggle" aria-expanded="false" aria-controls="cs1">
+          <span class="pt-label">Read case study</span><span class="pt-ico">+</span>
+        </button>
+        <div class="proj-panel" id="cs1" hidden>
+          <div class="cs">
+            <div class="cs-block">
+              <div class="cs-h">Problem</div>
+              <p class="cs-p">The same ingestion code behaved differently depending on which Linux box it ran on. Environments were built by hand, so dev and production drifted apart and failures surfaced in one place but not the other &mdash; the slowest kind of bug to chase, because reproducing it is the hard part.</p>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Approach</div>
+              <ul class="cs-ul">
+                <li>Packaged the Python and Bash application into a <strong>Docker image</strong> so the runtime, interpreter version and system dependencies are fixed at build time rather than inherited from the host.</li>
+                <li>Declared the GCP storage bucket, compute instance and service account in <strong>Terraform</strong>, so infrastructure changes go through review as code instead of being clicked into a console.</li>
+                <li>Kept one plan across environments &mdash; the difference between dev and production is a variables file, not a different procedure.</li>
+              </ul>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Architecture</div>
+              <div class="dgm">
+                <svg viewBox="0 0 760 220" role="img" aria-label="Source files flow through a Docker image running on Compute Engine into a Cloud Storage bucket; Terraform provisions the compute and storage layer">
+                  <defs><marker id="ah1" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#A1A1AA"/></marker></defs>
+                  <rect class="dgm-box" x="10" y="40" width="160" height="66" rx="5"/>
+                  <text class="dgm-t" x="28" y="69">Source Files</text>
+                  <text class="dgm-s" x="28" y="89">raw ingest</text>
+                  <rect class="dgm-box-ac" x="200" y="40" width="160" height="66" rx="5"/>
+                  <text class="dgm-t" x="218" y="69">Docker Image</text>
+                  <text class="dgm-s" x="218" y="89">python + bash</text>
+                  <rect class="dgm-box" x="390" y="40" width="160" height="66" rx="5"/>
+                  <text class="dgm-t" x="408" y="69">Compute Engine</text>
+                  <text class="dgm-s" x="408" y="89">linux vm</text>
+                  <rect class="dgm-box" x="580" y="40" width="160" height="66" rx="5"/>
+                  <text class="dgm-t" x="598" y="69">Cloud Storage</text>
+                  <text class="dgm-s" x="598" y="89">gcs bucket</text>
+                  <line class="dgm-ln" x1="170" y1="73" x2="192" y2="73" marker-end="url(#ah1)"/>
+                  <line class="dgm-ln" x1="360" y1="73" x2="382" y2="73" marker-end="url(#ah1)"/>
+                  <line class="dgm-ln" x1="550" y1="73" x2="572" y2="73" marker-end="url(#ah1)"/>
+                  <path class="dgm-dash" d="M470 106 L470 156"/>
+                  <path class="dgm-dash" d="M660 106 L660 156"/>
+                  <rect class="dgm-wrap" x="388" y="156" width="352" height="44" rx="5"/>
+                  <text class="dgm-lbl" x="406" y="183">TERRAFORM &mdash; VERSION-CONTROLLED PROVISIONING</text>
+                </svg>
+                <div class="dgm-cap">Terraform owns the compute and storage layer; the image owns everything above it</div>
+              </div>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Provisioning</div>
+              <div class="art">
+                <div class="art-bar"><span class="art-dot" style="background:#FF5F57"></span><span class="art-dot" style="background:#FEBC2E"></span><span class="art-dot" style="background:#28C840"></span><span class="art-name">terraform apply</span></div>
+                <pre><code><span class="pr">$</span> terraform apply -var-file=prod.tfvars
+
+Terraform will perform the following actions:
+  <span class="ok">+</span> google_storage_bucket.ingest
+  <span class="ok">+</span> google_compute_instance.pipeline_vm
+  <span class="ok">+</span> google_service_account.ingest_sa
+
+google_storage_bucket.ingest ......... <span class="ok">created</span>
+google_compute_instance.pipeline_vm .. <span class="ok">created</span>
+google_service_account.ingest_sa ..... <span class="ok">created</span>
+
+<span class="dm">Apply complete. Infrastructure matches the committed
+configuration &mdash; the same plan runs in every environment.</span></code></pre>
+              </div>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Outcome</div>
+              <p class="cs-p">Every Linux environment now runs the <strong>same version-controlled build</strong>. Rebuilding an environment is a Terraform apply rather than a day of manual setup, and &ldquo;works on my machine&rdquo; stopped being a valid explanation for a pipeline failure.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-item reveal">
+      <div class="proj-num">02/</div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <h3 class="proj-title">AI Quality Evaluation Framework</h3>
+          <div class="proj-client">Lumin Innovations</div>
+        </div>
+        <p class="proj-desc">Python + Bash tools analyzing 5,000+ AI-generated responses, flagging quality gaps at 98% accuracy. Root-cause separation between content gaps and prompt-handling failures cut engineering debugging time by 30%.</p>
+        <div class="proj-tags">
+          <span class="tag">Python</span><span class="tag">Bash</span>
+          <span class="tag">QA Automation</span><span class="tag">Root-cause Analysis</span>
+        </div>
+        <div class="proj-links">
+          <span class="proj-private">Internal — source not public</span>
+        </div>
+        <button class="proj-toggle" aria-expanded="false" aria-controls="cs2">
+          <span class="pt-label">Read case study</span><span class="pt-ico">+</span>
+        </button>
+        <div class="proj-panel" id="cs2" hidden>
+          <div class="cs">
+            <div class="cs-block">
+              <div class="cs-h">Problem</div>
+              <p class="cs-p">Thousands of AI chat responses needed review, and a wrong answer had two possible causes: the knowledge base genuinely lacked the fact, or the fact was there and the model failed to use it. Nobody knew which without investigating, so <strong>every failure was checked twice</strong> &mdash; once by content owners, once by engineers &mdash; and one of those investigations was always wasted.</p>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Approach</div>
+              <ul class="cs-ul">
+                <li>Built Python and Bash tooling to analyse responses at volume and produce remediation reports engineers could prioritise from, rather than a raw list of complaints.</li>
+                <li>Designed a <strong>root-cause separation</strong> rule applied before the ticket reaches a human: if retrieval found nothing, it is a content gap; if retrieval found the entry and the answer did not cite it, it is a prompt-handling bug.</li>
+                <li>Routed each class to the one team that can fix it, so a failure arrives with an owner already attached.</li>
+              </ul>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">The deciding logic</div>
+              <div class="art">
+                <div class="art-bar"><span class="art-dot" style="background:#FF5F57"></span><span class="art-dot" style="background:#FEBC2E"></span><span class="art-dot" style="background:#28C840"></span><span class="art-name">classify_failure.py</span></div>
+                <pre><code><span class="kw">def</span> <span class="fn">classify_failure</span>(response, kb_hit, prompt_trace):
+    <span class="cm"># One failure, one owner. The split below is the whole point:</span>
+    <span class="cm"># before it, engineers checked both causes on every bad answer.</span>
+
+    <span class="kw">if not</span> kb_hit.found:
+        <span class="cm"># the knowledge base genuinely lacks the fact</span>
+        <span class="kw">return</span> Failure(<span class="st">"content_gap"</span>, owner=<span class="st">"kb_owner"</span>, area=kb_hit.area)
+
+    <span class="kw">if not</span> prompt_trace.cited(kb_hit.entry_id):
+        <span class="cm"># it was retrievable and still missed &mdash; model side, not content</span>
+        <span class="kw">return</span> Failure(<span class="st">"prompt_handling"</span>, owner=<span class="st">"engineering"</span>,
+                       trace=prompt_trace.id)
+
+    <span class="kw">return</span> <span class="kw">None</span>   <span class="cm"># grounded and cited &mdash; not a failure</span></code></pre>
+              </div>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Outcome</div>
+              <div class="cs-out">
+                <div class="oc"><div class="oc-n">5,000+</div><div class="oc-l">Responses evaluated</div></div>
+                <div class="oc"><div class="oc-n">98%</div><div class="oc-l">Flagging accuracy</div></div>
+                <div class="oc"><div class="oc-n">30%</div><div class="oc-l">Less debugging time</div></div>
+                <div class="oc"><div class="oc-n">25%</div><div class="oc-l">Response precision lift</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-item reveal">
+      <div class="proj-num">03/</div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <h3 class="proj-title">Content Governance Automation</h3>
+          <div class="proj-client">Lumin Innovations</div>
+        </div>
+        <p class="proj-desc">Governance framework with per-area ownership and automated Bash audits routing 200+ stale knowledge-base entries monthly to owners &mdash; cutting content staleness by 45% and replacing a fully manual process.</p>
+        <div class="proj-tags">
+          <span class="tag">Bash</span><span class="tag">Jira</span>
+          <span class="tag">Governance</span><span class="tag">Automation</span>
+        </div>
+        <div class="proj-links">
+          <span class="proj-private">Internal — source not public</span>
+        </div>
+        <button class="proj-toggle" aria-expanded="false" aria-controls="cs3">
+          <span class="pt-label">Read case study</span><span class="pt-ico">+</span>
+        </button>
+        <div class="proj-panel" id="cs3" hidden>
+          <div class="cs">
+            <div class="cs-block">
+              <div class="cs-h">Problem</div>
+              <p class="cs-p">No one owned any particular area of the knowledge base. Reviews happened when someone noticed a problem, which meant content decayed quietly and the people best placed to fix an entry were never told it had gone stale. Auditing it by hand did not scale, and it was the first thing dropped under deadline pressure.</p>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Approach</div>
+              <ul class="cs-ul">
+                <li>Assigned <strong>one owner per content area</strong> so every entry has a name attached before it ever goes stale.</li>
+                <li>Made review a release-gated step tracked in Jira, rather than an intention.</li>
+                <li>Automated detection in Bash and had the audit open the review ticket against the mapped owner &mdash; the script does the routing, not a person.</li>
+                <li>Made an unmapped area a <strong>hard failure</strong>: better to break the run than to silently skip entries nobody owns.</li>
+              </ul>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">The audit</div>
+              <div class="art">
+                <div class="art-bar"><span class="art-dot" style="background:#FF5F57"></span><span class="art-dot" style="background:#FEBC2E"></span><span class="art-dot" style="background:#28C840"></span><span class="art-name">audit_kb.sh</span></div>
+                <pre><code><span class="cm">#!/usr/bin/env bash</span>
+<span class="cm"># Route stale knowledge-base entries to the owner of their area.</span>
+<span class="kw">set</span> -euo pipefail
+
+STALE_AFTER_DAYS=<span class="nu">180</span>
+OWNERS=<span class="st">"config/area-owners.tsv"</span>
+
+<span class="kw">while</span> IFS=$<span class="st">'\t'</span> <span class="kw">read</span> -r entry area last_review; <span class="kw">do</span>
+  age=$(( ( $(<span class="fn">date</span> +%s) - $(<span class="fn">date</span> -d <span class="st">"$last_review"</span> +%s) ) / <span class="nu">86400</span> ))
+  [[ <span class="st">"$age"</span> -lt <span class="st">"$STALE_AFTER_DAYS"</span> ]] &amp;&amp; <span class="kw">continue</span>
+
+  owner=$(<span class="fn">awk</span> -F<span class="st">'\t'</span> -v a=<span class="st">"$area"</span> <span class="st">'$1==a{print $2}'</span> <span class="st">"$OWNERS"</span>)
+  <span class="cm"># fail loud: an unmapped area must never be silently skipped</span>
+  : <span class="st">"${owner:?no owner mapped for area $area}"</span>
+
+  <span class="fn">jira_create_review</span> <span class="st">"$entry"</span> <span class="st">"$owner"</span> <span class="st">"$age"</span>
+<span class="kw">done</span> &lt; &lt;(<span class="fn">kb_export</span> --fields id,area,last_review)</code></pre>
+              </div>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Outcome</div>
+              <div class="cs-out">
+                <div class="oc"><div class="oc-n">200+</div><div class="oc-l">Entries routed monthly</div></div>
+                <div class="oc"><div class="oc-n">45%</div><div class="oc-l">Less content staleness</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-item reveal">
+      <div class="proj-num">04/</div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <h3 class="proj-title">Record Retention Advisor</h3>
+          <div class="proj-client">Town of Morrisville, NC</div>
+        </div>
+        <p class="proj-desc">Microsoft Copilot Studio agent grounded in the Town&rsquo;s records retention schedule. Replaced manual lookups with a conversational interface &mdash; each answer cites the schedule entry so staff can verify before acting.</p>
+        <div class="proj-tags">
+          <span class="tag">Copilot Studio</span><span class="tag">Microsoft 365</span>
+          <span class="tag">AI Agents</span><span class="tag">Knowledge Management</span>
+        </div>
+        <div class="proj-links">
+          <span class="proj-private">Client engagement — source not public</span>
+        </div>
+        <button class="proj-toggle" aria-expanded="false" aria-controls="cs4">
+          <span class="pt-label">Read case study</span><span class="pt-ico">+</span>
+        </button>
+        <div class="proj-panel" id="cs4" hidden>
+          <div class="cs">
+            <div class="cs-block">
+              <div class="cs-h">Problem</div>
+              <p class="cs-p">Town staff had to find the right row in a long records retention schedule before they could keep or destroy anything. The lookup was manual, easy to get wrong, and carried real consequences &mdash; destroying a record early is not a recoverable mistake.</p>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Approach</div>
+              <ul class="cs-ul">
+                <li>Built a <strong>Copilot Studio</strong> agent grounded in the Town&rsquo;s own retention schedule through knowledge sources and topics, so answers come from the authoritative document rather than general model knowledge.</li>
+                <li>Delivered it inside Microsoft 365, where staff already work, instead of as another system to log into.</li>
+                <li>Made every answer <strong>point back to its schedule entry</strong>. The agent speeds up the lookup; it never becomes the authority.</li>
+              </ul>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Answer shape</div>
+              <div class="art">
+                <div class="art-bar"><span class="art-dot" style="background:#FF5F57"></span><span class="art-dot" style="background:#FEBC2E"></span><span class="art-dot" style="background:#28C840"></span><span class="art-name">grounded response</span></div>
+                <pre><code><span class="dm">Staff</span>   How long do we keep building inspection reports?
+
+<span class="ok">Advisor</span> Retain for the period set by the Town&rsquo;s records retention
+        schedule, then dispose using that entry&rsquo;s disposition
+        instruction.
+
+        <span class="hl">Source</span>  Records Retention Schedule
+                &mdash; Building &amp; Inspections
+
+        <span class="dm">Open the cited entry and confirm before disposing of
+        any record.</span></code></pre>
+              </div>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Outcome</div>
+              <p class="cs-p">Retention questions are answered conversationally in Microsoft 365 instead of by manually searching the schedule &mdash; and because the citation travels with the answer, <strong>a person can still verify before acting</strong>. The design treats the agent as a faster route to the source, not a replacement for it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-item reveal">
+      <div class="proj-num">05/</div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <h3 class="proj-title">Coffee Sensory Quality Data Pipeline</h3>
+          <div class="proj-client">Personal &middot; Public Dataset</div>
+        </div>
+        <p class="proj-desc">Python pipeline cleaning 1,300+ Arabica cupping reviews from the Coffee Quality Institute, applying quality rules, loading to Azure SQL. Every rejected record is logged with its failing rule &mdash; no silent drops. Data lineage published to GitHub.</p>
+        <div class="proj-tags">
+          <span class="tag">Python</span><span class="tag">Pandas</span>
+          <span class="tag">Azure SQL</span><span class="tag">Power BI</span><span class="tag">GitHub</span>
+        </div>
+        <div class="proj-links">
+          <!-- TODO: publish the repo, then swap this line for the link below.
+               <a class="proj-link" href="https://github.com/BhargaviGudisa/coffee-quality-pipeline" target="_blank" rel="noopener">Source ↗</a> -->
+          <span class="proj-private">Repository being prepared for publication</span>
+        </div>
+        <button class="proj-toggle" aria-expanded="false" aria-controls="cs5">
+          <span class="pt-label">Read case study</span><span class="pt-ico">+</span>
+        </button>
+        <div class="proj-panel" id="cs5" hidden>
+          <div class="cs">
+            <div class="cs-block">
+              <div class="cs-h">Problem</div>
+              <p class="cs-p">The Coffee Quality Institute dataset is public and messy &mdash; missing scores, unparseable harvest years, absent countries of origin. The normal way to handle that is to drop bad rows during the load, which leaves a clean table and <strong>no idea what is missing from it or why</strong>. An analyst downstream cannot tell the difference between &ldquo;no data&rdquo; and &ldquo;data we quietly threw away&rdquo;.</p>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Approach</div>
+              <ul class="cs-ul">
+                <li>Wrote the quality rules as <strong>named, individually testable predicates</strong> rather than conditions buried in a load script.</li>
+                <li>Sent every rejected row to a reject table <strong>tagged with the rule that rejected it</strong>, so exclusions are queryable instead of invisible.</li>
+                <li>Loaded clean records to Azure SQL and surfaced them in Power BI, with every loaded score traceable back to its source row.</li>
+                <li>Published the lineage and a data dictionary to GitHub so other analysts can reuse the model instead of re-deriving it.</li>
+              </ul>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Architecture</div>
+              <div class="dgm">
+                <svg viewBox="0 0 760 290" role="img" aria-label="CQI dataset passes through Pandas quality rules; passing rows load to Azure SQL and then Power BI, failing rows go to a reject log tagged with the rule they failed">
+                  <defs><marker id="ah2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#A1A1AA"/></marker></defs>
+                  <rect class="dgm-box" x="10" y="110" width="152" height="66" rx="5"/>
+                  <text class="dgm-t" x="28" y="139">CQI Dataset</text>
+                  <text class="dgm-s" x="28" y="159">1,300+ reviews</text>
+                  <rect class="dgm-box-ac" x="196" y="110" width="170" height="66" rx="5"/>
+                  <text class="dgm-t" x="214" y="139">Quality Rules</text>
+                  <text class="dgm-s" x="214" y="159">pandas validation</text>
+                  <rect class="dgm-box" x="436" y="30" width="150" height="66" rx="5"/>
+                  <text class="dgm-t" x="454" y="59">Azure SQL</text>
+                  <text class="dgm-s" x="454" y="79">clean load</text>
+                  <rect class="dgm-box" x="436" y="190" width="150" height="66" rx="5"/>
+                  <text class="dgm-t" x="454" y="219">Reject Log</text>
+                  <text class="dgm-s" x="454" y="239">+ failing rule</text>
+                  <rect class="dgm-box" x="620" y="30" width="130" height="66" rx="5"/>
+                  <text class="dgm-t" x="638" y="59">Power BI</text>
+                  <text class="dgm-s" x="638" y="79">dashboard</text>
+                  <line class="dgm-ln" x1="162" y1="143" x2="188" y2="143" marker-end="url(#ah2)"/>
+                  <path class="dgm-ln" d="M366 143 H400"/>
+                  <path class="dgm-ln" d="M400 143 V63 H428" marker-end="url(#ah2)"/>
+                  <path class="dgm-ln" d="M400 143 V223 H428" marker-end="url(#ah2)"/>
+                  <line class="dgm-ln" x1="586" y1="63" x2="612" y2="63" marker-end="url(#ah2)"/>
+                  <text class="dgm-lbl" x="408" y="100">PASS</text>
+                  <text class="dgm-lbl" x="408" y="198">REJECT</text>
+                </svg>
+                <div class="dgm-cap">Rejects are a branch of the pipeline, not a side effect of it</div>
+              </div>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">The rules</div>
+              <div class="art">
+                <div class="art-bar"><span class="art-dot" style="background:#FF5F57"></span><span class="art-dot" style="background:#FEBC2E"></span><span class="art-dot" style="background:#28C840"></span><span class="art-name">validate.py</span></div>
+                <pre><code>REJECT_RULES = {
+    <span class="st">"missing_cup_points"</span>: <span class="kw">lambda</span> r: pd.isna(r.total_cup_points),
+    <span class="st">"score_out_of_range"</span>: <span class="kw">lambda</span> r: <span class="kw">not</span> <span class="nu">0</span> &lt;= r.total_cup_points &lt;= <span class="nu">100</span>,
+    <span class="st">"missing_country"</span>:    <span class="kw">lambda</span> r: pd.isna(r.country_of_origin),
+    <span class="st">"bad_harvest_year"</span>:   <span class="kw">lambda</span> r: parse_year(r.harvest_year) <span class="kw">is None</span>,
+}
+
+<span class="kw">def</span> <span class="fn">validate</span>(df):
+    clean, rejected = [], []
+    <span class="kw">for</span> row <span class="kw">in</span> df.itertuples():
+        failed = [name <span class="kw">for</span> name, rule <span class="kw">in</span> REJECT_RULES.items() <span class="kw">if</span> rule(row)]
+        <span class="kw">if</span> failed:
+            <span class="cm"># keep the row AND the reason &mdash; a drop you cannot query</span>
+            <span class="cm"># is indistinguishable from data that never existed</span>
+            rejected.append({**row._asdict(), <span class="st">"failed_rules"</span>: <span class="st">";"</span>.join(failed)})
+        <span class="kw">else</span>:
+            clean.append(row)
+    <span class="kw">return</span> pd.DataFrame(clean), pd.DataFrame(rejected)</code></pre>
+              </div>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Outcome</div>
+              <div class="cs-out">
+                <div class="oc"><div class="oc-n">1,300+</div><div class="oc-l">Cupping reviews processed</div></div>
+                <div class="oc"><div class="oc-n">0</div><div class="oc-l">Silent record drops</div></div>
+              </div>
+              <p class="cs-p" style="margin-top:1rem">Every loaded score traces back to its source row, and every excluded row names the rule that excluded it. The lineage and data dictionary are published, so the model is reusable rather than one-off.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-item reveal">
+      <div class="proj-num">06/</div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <h3 class="proj-title">Permit Request Tracker</h3>
+          <div class="proj-client">Portfolio Project</div>
+        </div>
+        <p class="proj-desc">C# ASP.NET Core MVC web app for logging, assigning, and closing permit requests. Normalized SQL Server schema with T-SQL migration for legacy CSV data, before/after execution plans for index design, deployed to Azure App Service.</p>
+        <div class="proj-tags">
+          <span class="tag">C#</span><span class="tag">ASP.NET Core</span>
+          <span class="tag">SQL Server</span><span class="tag">Entity Framework</span><span class="tag">Azure</span>
+        </div>
+        <div class="proj-links">
+          <!-- TODO: publish the repo, then swap this line for the link below.
+               <a class="proj-link" href="https://github.com/BhargaviGudisa/permit-request-tracker" target="_blank" rel="noopener">Source ↗</a> -->
+          <span class="proj-private">Repository being prepared for publication</span>
+        </div>
+        <button class="proj-toggle" aria-expanded="false" aria-controls="cs6">
+          <span class="pt-label">Read case study</span><span class="pt-ico">+</span>
+        </button>
+        <div class="proj-panel" id="cs6" hidden>
+          <div class="cs">
+            <div class="cs-block">
+              <div class="cs-h">Problem</div>
+              <p class="cs-p">Permit requests lived in flat CSV exports. Status was free text, so the same state was spelled three ways; assignment was a name typed into a cell; and there was no referential integrity, no audit trail, and no safe way for two people to work at once.</p>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Approach</div>
+              <ul class="cs-ul">
+                <li>Designed a <strong>normalized schema</strong> with permit type and assignee as real lookups rather than repeated strings, modelled through Entity Framework Core.</li>
+                <li>Wrote a <strong>T-SQL conversion script</strong> that migrates the legacy CSV, coercing dates safely and refusing rows that cannot be parsed instead of inserting nulls.</li>
+                <li>Chose indexes from <strong>before-and-after execution plans</strong> rather than guessing &mdash; the covering index follows what the queue screen actually queries.</li>
+                <li>Validated on both client and server, and deployed to Azure App Service.</li>
+              </ul>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Migration &amp; index design</div>
+              <div class="art">
+                <div class="art-bar"><span class="art-dot" style="background:#FF5F57"></span><span class="art-dot" style="background:#FEBC2E"></span><span class="art-dot" style="background:#28C840"></span><span class="art-name">migrate_legacy.sql</span></div>
+                <pre><code><span class="cm">-- Legacy CSV -&gt; normalized schema</span>
+<span class="kw">INSERT INTO</span> PermitRequest (RequestRef, PermitTypeId, Status, SubmittedUtc, AssignedToId)
+<span class="kw">SELECT</span>    s.request_ref,
+          pt.PermitTypeId,                   <span class="cm">-- lookup, not free text</span>
+          <span class="fn">COALESCE</span>(<span class="fn">NULLIF</span>(<span class="fn">LTRIM</span>(<span class="fn">RTRIM</span>(s.status)), <span class="st">''</span>), <span class="st">'Open'</span>),
+          <span class="fn">TRY_CONVERT</span>(datetime2, s.submitted_at, <span class="nu">126</span>),
+          u.UserId
+<span class="kw">FROM</span>      staging.LegacyPermitCsv <span class="kw">AS</span> s
+<span class="kw">JOIN</span>      PermitType              <span class="kw">AS</span> pt <span class="kw">ON</span> pt.Code  = s.permit_type_code
+<span class="kw">LEFT JOIN</span> AppUser                 <span class="kw">AS</span> u  <span class="kw">ON</span> u.Email = s.assigned_email
+<span class="cm">-- refuse unparseable dates rather than silently inserting NULL</span>
+<span class="kw">WHERE</span>     <span class="fn">TRY_CONVERT</span>(datetime2, s.submitted_at, <span class="nu">126</span>) <span class="kw">IS NOT NULL</span>;
+
+<span class="cm">-- The queue screen filters on status + date, then joins the assignee.</span>
+<span class="cm">-- The plan showed that join driving the cost, so cover all three.</span>
+<span class="kw">CREATE NONCLUSTERED INDEX</span> IX_PermitRequest_Status_Submitted
+    <span class="kw">ON</span> PermitRequest (Status, SubmittedUtc <span class="kw">DESC</span>)
+    <span class="kw">INCLUDE</span> (RequestRef, AssignedToId);</code></pre>
+              </div>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Outcome</div>
+              <p class="cs-p">Staff log, assign and close requests against a schema that <strong>enforces its own integrity</strong>, with legacy records migrated rather than abandoned. Index choices are backed by execution plans captured before and after, so the tuning is evidence rather than intuition.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="proj-item reveal">
+      <div class="proj-num">07/</div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <h3 class="proj-title">Review Sentiment &amp; Competitor Radar</h3>
+          <div class="proj-client">Personal &middot; Live demo</div>
+        </div>
+        <p class="proj-desc">Aspect-based sentiment analysis over the Yelp Open Dataset, scoring one business against five nearby competitors across six service aspects. Streamlit dashboard with radar comparison, gap analysis and a filterable review browser.</p>
+        <div class="proj-tags">
+          <span class="tag">Python</span><span class="tag">Streamlit</span>
+          <span class="tag">Plotly</span><span class="tag">pandas</span>
+          <span class="tag">SQLite</span><span class="tag">VADER</span>
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/BhargaviGudisa/review-sentiment-radar" target="_blank" rel="noopener">Source &#8599;</a>
+          <a class="proj-link" href="https://review-sentiment-radar-iyxpjovmbfqcbyeuzk3ifs.streamlit.app/" target="_blank" rel="noopener">Live demo &#8599;</a>
+        </div>
+        <button class="proj-toggle" aria-expanded="false" aria-controls="cs7">
+          <span class="pt-label">Read case study</span><span class="pt-ico">+</span>
+        </button>
+        <div class="proj-panel" id="cs7" hidden>
+          <div class="cs">
+            <div class="cs-block">
+              <div class="cs-h">Problem</div>
+              <p class="cs-p">A small business collects hundreds of reviews and reads almost none of them. The star rating tells an owner they are a 4.1; it does not tell them <strong>what to fix first</strong>, or where a competitor two streets away is beating them. Aggregate sentiment has the same flaw &mdash; one number cannot distinguish slow service from mediocre food.</p>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Approach</div>
+              <ul class="cs-ul">
+                <li>Scored sentiment <strong>per aspect rather than per review</strong> &mdash; coffee, food, service, wait time, price, ambience &mdash; by tagging each sentence to an aspect and scoring it independently.</li>
+                <li>Scoped the comparison deliberately: 6 Philadelphia coffee shops drawn from the dataset&rsquo;s 6.99M reviews, picked by review volume and proximity, so the competitor set is a real local market rather than an average.</li>
+                <li>Chose <strong>VADER and keyword matching over an LLM</strong>. The tradeoff is accuracy for cost, speed and explainability &mdash; every score traces to the sentences that produced it, and the demo costs nothing to run.</li>
+                <li>Landed the parsed reviews in SQLite between load and analysis, so scoring re-runs without re-parsing the source JSON.</li>
+              </ul>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Pipeline</div>
+              <div class="art">
+                <div class="art-bar"><span class="art-dot" style="background:#FF5F57"></span><span class="art-dot" style="background:#FEBC2E"></span><span class="art-dot" style="background:#28C840"></span><span class="art-name">aspect scoring</span></div>
+                <pre><code><span class="cm"># Yelp JSON -&gt; load_yelp.py -&gt; SQLite -&gt; analyze.py -&gt; app.py</span>
+
+ASPECTS = {
+    <span class="st">"service"</span>:   {<span class="st">"staff"</span>, <span class="st">"barista"</span>, <span class="st">"friendly"</span>, <span class="st">"rude"</span>},
+    <span class="st">"wait_time"</span>: {<span class="st">"wait"</span>, <span class="st">"slow"</span>, <span class="st">"queue"</span>, <span class="st">"line"</span>},
+    <span class="cm"># ... coffee, food, price, ambience</span>
+}
+
+<span class="kw">def</span> <span class="fn">score_review</span>(text):
+    <span class="cm"># sentence level, not review level: one review can praise the</span>
+    <span class="cm"># coffee and damn the wait, and both facts need to survive</span>
+    scores = defaultdict(list)
+    <span class="kw">for</span> sent <span class="kw">in</span> sent_tokenize(text):
+        hits = [a <span class="kw">for</span> a, words <span class="kw">in</span> ASPECTS.items()
+                  <span class="kw">if</span> words &amp; set(sent.lower().split())]
+        <span class="kw">if</span> <span class="kw">not</span> hits:
+            <span class="kw">continue</span>  <span class="cm"># unattributable sentiment is dropped, not spread</span>
+        compound = vader.polarity_scores(sent)[<span class="st">"compound"</span>]
+        <span class="kw">for</span> aspect <span class="kw">in</span> hits:
+            scores[aspect].append(compound)
+    <span class="kw">return</span> {a: mean(v) <span class="kw">for</span> a, v <span class="kw">in</span> scores.items()}</code></pre>
+              </div>
+            </div>
+            <div class="cs-block">
+              <div class="cs-h">Outcome</div>
+              <div class="cs-out">
+                <div class="oc"><div class="oc-n">6.99M</div><div class="oc-l">Reviews in source dataset</div></div>
+                <div class="oc"><div class="oc-n">6</div><div class="oc-l">Aspects scored separately</div></div>
+                <div class="oc"><div class="oc-n">&minus;0.15</div><div class="oc-l">Largest competitor gap found</div></div>
+              </div>
+              <p class="cs-p">The dashboard turns a wall of reviews into one answer: the target business trails its competitors most on <strong>food (&minus;0.15)</strong>, then service (&minus;0.09) and wait time (&minus;0.07) &mdash; a ranked list of what to fix rather than a rating to feel bad about. The known limits are stated in the repository rather than hidden: keyword matching misses phrasing an LLM would catch, and the public dataset covers 11 metro areas, so the live demo runs on Philadelphia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- IMPACT -->
+<section id="impact" class="sec"><div class="c">
+  <div class="sec-hd reveal">
+    <div class="sec-label">Outcomes</div>
+    <h2 class="sec-title">Impact</h2>
+  </div>
+  <div style="border:1px solid var(--bd)">
+    <div class="metrics-g">
+      <div class="m-cell reveal">
+        <div class="m-n"><span class="mn" data-to="45">0</span><span class="u">%</span></div>
+        <div class="m-l">Reduction in knowledge-base content staleness through governance automation</div>
+      </div>
+      <div class="m-cell reveal">
+        <div class="m-n"><span class="mn" data-to="98">0</span><span class="u">%</span></div>
+        <div class="m-l">Accuracy in AI quality evaluation flagging across 5,000+ responses</div>
+      </div>
+      <div class="m-cell reveal">
+        <div class="m-n"><span class="mn" data-to="30">0</span><span class="u">%</span></div>
+        <div class="m-l">Reduction in debugging time from root-cause separation process design</div>
+      </div>
+      <div class="m-cell reveal">
+        <div class="m-n"><span class="mn" data-to="25">0</span><span class="u">%</span></div>
+        <div class="m-l">Improvement in AI response precision through monitoring and governance</div>
+      </div>
+    </div>
+    <div class="metrics-s">
+      <div class="ms-cell reveal"><div class="ms-n">22%</div><div class="ms-l">Reduction in policy escalations</div></div>
+      <div class="ms-cell reveal"><div class="ms-n">18%</div><div class="ms-l">Increase in search success</div></div>
+      <div class="ms-cell reveal"><div class="ms-n">200+</div><div class="ms-l">Stale entries auto-routed monthly</div></div>
+      <div class="ms-cell reveal"><div class="ms-n">15 hrs</div><div class="ms-l">Weekly review time saved</div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- EDUCATION -->
+<section id="education" class="sec"><div class="c">
+  <div class="sec-hd reveal">
+    <div class="sec-label">Credentials</div>
+    <h2 class="sec-title">Education</h2>
+  </div>
+  <div class="edu-list">
+    <div class="edu-item reveal">
+      <div class="edu-year">Dec 2025</div>
+      <div class="edu-info">
+        <h3 class="edu-name">M.S. Computer and Information Sciences</h3>
+        <div class="edu-org">Florida Atlantic University — <strong>GPA 3.86</strong></div>
+        <div class="edu-org" style="margin-top:.4rem;font-size:.8rem">Cloud Computing · Database Systems · Big Data Analytics · Machine Learning · Data Mining · Data Visualization</div>
+      </div>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-year">Microsoft</div>
+      <div class="edu-info">
+        <h3 class="edu-name">Azure Fundamentals Certification</h3>
+        <div class="edu-org">Microsoft Certified: AZ-900</div>
+      </div>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-year">Achievement</div>
+      <div class="edu-info">
+        <h3 class="edu-name">Programming Essentials in Python</h3>
+        <div class="edu-org">Statement of Achievement</div>
+      </div>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-year">Publication</div>
+      <div class="edu-info">
+        <h3 class="edu-name">Hybrid model of passive aggressive classifier ML approach to fake news detection</h3>
+        <div class="edu-org">Published — Springer</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CONTACT -->
+<section id="contact"><div class="c">
+  <div class="sec-hd reveal">
+    <div class="sec-label">Get in touch</div>
+    <h2 class="sec-title">Contact</h2>
+  </div>
+  <div class="ct-g">
+    <div class="reveal">
+      <a class="ct-big-email" href="mailto:bhargavi4044g@gmail.com">bhargavi4044g<br>@gmail.com</a>
+      <div class="ct-info">
+        <div class="ct-row"><span class="ct-key">Phone</span><span class="ct-val"><a href="tel:+15619870286">(561) 987-0286</a></span></div>
+        <div class="ct-row"><span class="ct-key">GitHub</span><span class="ct-val"><a href="https://github.com/BhargaviGudisa" target="_blank" rel="noopener">github.com/BhargaviGudisa</a></span></div>
+        <div class="ct-row"><span class="ct-key">LinkedIn</span><span class="ct-val"><a href="https://www.linkedin.com/in/bhargavi-gudisa-a2b05021b/" target="_blank" rel="noopener">linkedin.com/in/bhargavi-gudisa-a2b05021b ↗</a></span></div>
+        <div class="ct-row"><span class="ct-key">Location</span><span class="ct-val">USA · Eastern Time Zone</span></div>
+      </div>
+    </div>
+    <form class="ct-form reveal" id="cf">
+      <div class="f2">
+        <div class="fld"><label for="fn">Name</label><input type="text" id="fn" name="name" autocomplete="name" required></div>
+        <div class="fld"><label for="fe">Email</label><input type="email" id="fe" name="email" autocomplete="email" required></div>
+      </div>
+      <div class="fld"><label for="fsu">Subject</label><input type="text" id="fsu" name="subject" required></div>
+      <div class="fld"><label for="fm">Message</label><textarea id="fm" name="message" required></textarea></div>
+      <button type="submit" class="btn bp" style="width:fit-content">Send message →</button>
+      <div class="fs-msg" id="fst" role="status" aria-live="polite"></div>
+      <p class="ct-note">Sending opens your own email app. If it doesn’t, write to
+        <a href="mailto:bhargavi4044g@gmail.com">bhargavi4044g@gmail.com</a> directly.</p>
+    </form>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer><div class="c"><div class="ft">
+  <div class="ft-c">© 2026 Bhargavi Gudisa</div>
+  <div class="ft-links">
+    <a href="https://github.com/BhargaviGudisa" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/bhargavi-gudisa-a2b05021b/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:bhargavi4044g@gmail.com">Email</a>
+  </div>
+</div></div></footer>
+
+<button id="btt" aria-label="Back to top">↑</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script>
+/* ──────────────────────────────────────────────────────────────────────────
+   Structure note: everything below is split into two halves.
+
+   CORE  — theme, nav, case studies, contact, back-to-top. Plain DOM, no
+           dependencies. Must keep working if the CDN is blocked, which is
+           common on corporate networks.
+   MOTION — entrance animations, scroll reveals, counters, scroll progress.
+           Runs only when GSAP actually loaded. If it did not, the .js class
+           comes off the root element, the .reveal rules stop hiding anything,
+           and the counters are written at their final value instead.
+   ────────────────────────────────────────────────────────────────────────── */
+var REDUCED   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var HAS_GSAP  = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+var HAS_LENIS = typeof Lenis !== 'undefined';
+var lenis = null;
+
+/* ════════════════ CORE ════════════════ */
+
+// ── Scrolling: Lenis when available, native smooth otherwise ──
+function goTo(target, offset){
+  if(lenis){ lenis.scrollTo(target, {offset: offset || 0}); return; }
+  var behavior = REDUCED ? 'auto' : 'smooth';
+  if(typeof target === 'number'){
+    window.scrollTo({top:target, behavior:behavior});
+  }else{
+    var y = target.getBoundingClientRect().top + window.pageYOffset + (offset || 0);
+    window.scrollTo({top:y, behavior:behavior});
+  }
+}
+
+// ── Theme toggle ──
+(function(){
+  var saved='';try{saved=localStorage.getItem('bg-t')||'';}catch(e){}
+  if(saved)document.documentElement.setAttribute('data-theme',saved);
+  var btn=document.getElementById('ttog');
+  if(!btn)return;
+  btn.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme')||'light';
+    var nxt=cur==='dark'?'light':'dark';
+    document.documentElement.setAttribute('data-theme',nxt);
+    btn.setAttribute('aria-label','Switch to '+(nxt==='dark'?'light':'dark')+' theme');
+    try{localStorage.setItem('bg-t',nxt);}catch(e){}
+  });
+})();
+
+// ── Mobile nav ──
+(function(){
+  var hbg=document.getElementById('hbg');
+  var mn=document.getElementById('mnav');
+  if(!hbg||!mn)return;
+  function setOpen(open){
+    mn.classList.toggle('open',open);
+    hbg.setAttribute('aria-expanded',open?'true':'false');
+  }
+  hbg.addEventListener('click',function(){ setOpen(!mn.classList.contains('open')); });
+  mn.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){ setOpen(false); });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && mn.classList.contains('open')) setOpen(false);
+  });
+})();
+
+// ── Smooth scroll for in-page links (offset clears the 60px fixed nav) ──
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var href=this.getAttribute('href');
+    if(href==='#')return;
+    var t=document.querySelector(href);
+    if(t){e.preventDefault();goTo(t,-70);}
+  });
+});
+
+// ── Back to top ──
+(function(){
+  var btt=document.getElementById('btt');
+  if(btt){
+    window.addEventListener('scroll',function(){
+      btt.classList.toggle('show',window.scrollY>600);
+    },{passive:true});
+    btt.addEventListener('click',function(){goTo(0);});
+  }
+  var logo=document.getElementById('logo');
+  if(logo){
+    logo.addEventListener('click',function(){goTo(0);});
+    logo.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();goTo(0);}
+    });
+  }
+})();
+
+// ── Case study panels ──
+document.querySelectorAll('.proj-toggle').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var item  = btn.closest('.proj-item');
+    var panel = item.querySelector('.proj-panel');
+    var label = btn.querySelector('.pt-label');
+    var open  = !item.classList.contains('open');
+
+    item.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    label.textContent = open ? 'Close case study' : 'Read case study';
+
+    // No GSAP, or the visitor asked for less motion: snap it.
+    if(!HAS_GSAP || REDUCED){
+      panel.hidden = !open;
+      panel.style.height  = open ? 'auto' : '0';
+      panel.style.opacity = open ? '1' : '0';
+      if(HAS_GSAP) ScrollTrigger.refresh();
+      return;
+    }
+
+    gsap.killTweensOf(panel);
+    if(open){
+      panel.hidden = false;
+      gsap.set(panel,{height:'auto',opacity:1});
+      gsap.from(panel,{
+        height:0, opacity:0, duration:.45, ease:'power2.out',
+        onComplete:function(){gsap.set(panel,{height:'auto'});ScrollTrigger.refresh();}
+      });
+    }else{
+      gsap.to(panel,{
+        height:0, opacity:0, duration:.3, ease:'power2.in',
+        onComplete:function(){panel.hidden = true;ScrollTrigger.refresh();}
+      });
+    }
+  });
+});
+
+// ── Contact form ──
+// mailto: only opens a mail client the visitor may not have configured, so the
+// address is always shown as a plain link too and the status line says what
+// happened rather than claiming the message was sent.
+(function(){
+  var form=document.getElementById('cf');
+  if(!form)return;
+  var status=document.getElementById('fst');
+  var timer=null;
+
+  function say(msg,isError){
+    if(!status)return;
+    status.textContent=msg;
+    status.classList.toggle('err',!!isError);
+    status.style.display='block';
+    clearTimeout(timer);
+    timer=setTimeout(function(){status.style.display='none';},12000);
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    var n   = form.elements.name.value.trim();
+    var em  = form.elements.email.value.trim();
+    var sub = form.elements.subject.value.trim();
+    var msg = form.elements.message.value.trim();
+
+    if(!n || !em || !sub || !msg){
+      say('Please fill in every field before sending.',true);
+      (!n?form.elements.name:!em?form.elements.email:!sub?form.elements.subject:form.elements.message).focus();
+      return;
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){
+      say('That email address does not look right — please check it.',true);
+      form.elements.email.focus();
+      return;
+    }
+
+    var body='From: '+n+' <'+em+'>\n\n'+msg;
+    window.location.href='mailto:bhargavi4044g@gmail.com'
+      +'?subject='+encodeURIComponent(sub)
+      +'&body='+encodeURIComponent(body);
+
+    say('Opening your email app with this message ready to send. If nothing happens, email bhargavi4044g@gmail.com directly — the address is linked above.');
+  });
+})();
+
+/* ════════════════ MOTION ════════════════ */
+
+// Counters are filled either way; only the animation is optional.
+function animNum(el, to){
+  var dur=1200, start=null;
+  function step(ts){
+    if(!start)start=ts;
+    var p=Math.min((ts-start)/dur,1);
+    var e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(to*e);
+    if(p<1)requestAnimationFrame(step);
+    else el.textContent=to;
+  }
+  requestAnimationFrame(step);
+}
+function fillCounters(){
+  document.querySelectorAll('[data-to]').forEach(function(el){
+    el.textContent=el.dataset.to;
+  });
+}
+
+if(!HAS_GSAP){
+  // GSAP never arrived. Undo the pre-reveal styling and show the real numbers.
+  document.documentElement.classList.remove('js');
+  document.querySelectorAll('.reveal').forEach(function(el){
+    el.style.opacity='1'; el.style.transform='none';
+  });
+  fillCounters();
+}else{
+
+gsap.registerPlugin(ScrollTrigger);
+
+// ── Lenis momentum scrolling, driven by the GSAP ticker ──
+if(HAS_LENIS && !REDUCED){
+  lenis = new Lenis({
+    duration:1.05,
+    easing:function(t){return Math.min(1, 1.001 - Math.pow(2, -10*t));},
+    smoothWheel:true, touchMultiplier:1.6
+  });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+  gsap.ticker.lagSmoothing(0);
+}
+
+// ── Active nav links ──
+function setActive(id){
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.classList.toggle('on', a.getAttribute('href')==='#'+id);
+  });
+}
+document.querySelectorAll('section[id]').forEach(function(sec){
+  ScrollTrigger.create({
+    trigger:sec, start:'top 55%', end:'bottom 55%',
+    onEnter:function(){setActive(sec.id)},
+    onEnterBack:function(){setActive(sec.id)}
+  });
+});
+
+if(REDUCED){
+  // Keep the content, drop the movement.
+  document.documentElement.classList.remove('js');
+  document.querySelectorAll('.reveal').forEach(function(el){
+    el.style.opacity='1'; el.style.transform='none';
+  });
+  fillCounters();
+}else{
+
+  // ── HERO NAME: char-split stagger (SplitText-style, vanilla) ──
+  (function(){
+    var el = document.getElementById('hero-name');
+    if(!el) return;
+    var html = '';
+    el.childNodes.forEach(function(node){
+      if(node.nodeType === 3){
+        node.textContent.split('').forEach(function(ch){
+          if(ch===' '){html+='<span style="display:inline-block"> </span>';}
+          else{html+='<span class="char" style="display:inline-block">'+ch+'</span>';}
+        });
+      } else if(node.nodeName==='BR'){
+        html+='<br>';
+      }
+    });
+    el.innerHTML = html;
+
+    var chars = el.querySelectorAll('.char');
+    gsap.set(chars,{opacity:0,y:30,rotateX:-50,transformOrigin:'50% 100%'});
+    gsap.to(chars,{
+      opacity:1, y:0, rotateX:0,
+      duration:0.55, stagger:0.025,
+      ease:'expo.out', delay:0.15,
+      clearProps:'transform,opacity'
+    });
+  })();
+
+  // ── Hero content fade in ──
+  gsap.from('.hero-status',{opacity:0,y:10,duration:.4,ease:'power1.out',delay:.05});
+  gsap.from('.hero-role',  {opacity:0,y:8, duration:.4,ease:'power1.out',delay:.55});
+  gsap.from('.hero-desc',  {opacity:0,y:10,duration:.4,ease:'power1.out',delay:.65});
+  gsap.from('.hero-ctas',  {opacity:0,y:8, duration:.4,ease:'power1.out',delay:.75});
+  gsap.from('.hero-meta',  {opacity:0,     duration:.4,ease:'power1.out',delay:.85});
+  gsap.from('.hero-ph',    {opacity:0,scale:.97,duration:.6,ease:'power2.out',delay:.2});
+
+  // ── Scroll reveal ──
+  document.querySelectorAll('.reveal').forEach(function(el){
+    gsap.fromTo(el,
+      {opacity:0, y:12},
+      {
+        opacity:1, y:0,
+        duration:0.35, ease:'power1.out',
+        scrollTrigger:{
+          trigger:el, start:'top 90%',
+          toggleActions:'play none none reverse'
+        }
+      }
+    );
+  });
+
+  // ── Project card stagger ──
+  gsap.from('.proj-item',{
+    opacity:0, y:8,
+    duration:0.3, stagger:0.04,
+    ease:'power1.out',
+    scrollTrigger:{trigger:'.proj-list', start:'top 85%'}
+  });
+
+  // ── Counters ──
+  var sbDone=false;
+  ScrollTrigger.create({
+    trigger:'#stats', start:'top 90%',
+    onEnter:function(){
+      if(sbDone)return; sbDone=true;
+      document.querySelectorAll('.cn[data-to]').forEach(function(el){
+        animNum(el,parseInt(el.dataset.to));
+      });
+    }
+  });
+  var impDone=false;
+  ScrollTrigger.create({
+    trigger:'#impact', start:'top 85%',
+    onEnter:function(){
+      if(impDone)return; impDone=true;
+      document.querySelectorAll('.mn[data-to]').forEach(function(el){
+        animNum(el,parseInt(el.dataset.to));
+      });
+    }
+  });
+
+  // ── Scroll progress ──
+  gsap.to('#prog',{
+    scaleX:1, ease:'none',
+    scrollTrigger:{trigger:document.body, start:'top top', end:'bottom bottom', scrub:.3}
+  });
+
+} // /REDUCED
+} // /HAS_GSAP
+</script>
+</body>
+</html>
