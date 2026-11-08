@@ -84,11 +84,21 @@
 % and FAU both point to South Florida — confirm and set it.
 \newcommand{\mylocation}{Boca Raton, FL}
 
-\newcommand{\mysite}{\href{https://bhargavigudisa.github.io}{bhargavigudisa.github.io}}
-\newcommand{\mylinkedin}{\href{https://www.linkedin.com/in/bhargavi-gudisa-a2b05021b/}{linkedin.com/in/bhargavi-gudisa-a2b05021b}}
-\newcommand{\mygithub}{\href{https://github.com/BhargaviGudisa}{github.com/BhargaviGudisa}}
+% Short labels rather than printed URLs. One tradeoff to know about: an ATS that
+% discards hyperlink targets keeps only the word "GitHub", where a printed URL
+% would have survived as text. Most modern parsers read the target, and nothing
+% is lost on a human reader. To go back to full URLs, swap in the commented
+% versions below.
+\newcommand{\mysite}{\href{https://bhargavigudisa.github.io}{Portfolio}}
+\newcommand{\mylinkedin}{\href{https://www.linkedin.com/in/bhargavi-gudisa-a2b05021b/}{LinkedIn}}
+\newcommand{\mygithub}{\href{https://github.com/BhargaviGudisa}{GitHub}}
+
+% \newcommand{\mysite}{\href{https://bhargavigudisa.github.io}{bhargavigudisa.github.io}}
+% \newcommand{\mylinkedin}{\href{https://www.linkedin.com/in/bhargavi-gudisa-a2b05021b/}{linkedin.com/in/bhargavi-gudisa-a2b05021b}}
+% \newcommand{\mygithub}{\href{https://github.com/BhargaviGudisa}{github.com/BhargaviGudisa}}
 
 \newcommand{\sep}{~~\textbullet~~}
+\newcommand{\pipe}{~~\textcolor{rulegray}{\textbar}~~}
 
 %==============================================================================
 \begin{document}
@@ -98,8 +108,8 @@
   {\LARGE\bfseries\myname}\\[3pt]
   {\small\mytitle}\\[5pt]
   {\small
-    \myphone\sep\myemail\sep\mylocation\\[2.5pt]
-    \mysite\sep\mylinkedin\sep\mygithub
+    \myphone\sep\myemail\sep\mylocation\\[3pt]
+    \mygithub\pipe\mylinkedin\pipe\mysite
   }
 \end{center}
 \vspace{-4pt}
