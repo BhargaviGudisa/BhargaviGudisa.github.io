@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Validate the page
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Markup balance, JSON-LD, aria-controls and label targets, duplicate
+      # ids, missing local assets, and the html.js scoping that stops a failed
+      # GSAP load from rendering the page blank.
+      - name: Structural checks
+        run: python .github/scripts/check_site.py
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # The page carries its script inline, so a syntax error there is not
+      # caught by anything else and only shows up as a dead page in a browser.
+      - name: Syntax-check the inline JavaScript
+        run: |
+          python - <<'PY'
+          import re, pathlib
+
+          src = pathlib.Path("index.html").read_text(encoding="utf-8")
+          blocks = []
+          for match in re.finditer(r"<script([^>]*)>(.*?)</script>", src, re.S):
+              attrs, body = match.group(1), match.group(2)
+              # Skip external scripts (no body) and the JSON-LD block, which is
+              # data, not JavaScript — the type lives in the attributes, not the
+              # body, so this has to be tested on attrs.
+              if "src=" in attrs or "application/ld+json" in attrs:
+                  continue
+              if body.strip():
+                  blocks.append(body)
+
+          out = pathlib.Path("_inline_js")
+          out.mkdir(exist_ok=True)
+          for i, body in enumerate(blocks):
+              (out / f"block{i}.js").write_text(body, encoding="utf-8")
+          print(f"extracted {len(blocks)} inline script block(s)")
+          PY
+          for f in _inline_js/*.js; do echo "checking $f"; node --check "$f"; done
+
+      - name: Confirm the résumé PDF is readable
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+          pdf=$(ls *.pdf 2>/dev/null | head -1)
+          if [ -z "$pdf" ]; then echo "no PDF in the repository"; exit 0; fi
+          words=$(pdftotext -enc UTF-8 "$pdf" - | wc -w)
+          echo "$pdf extracts $words words"
+          # A résumé that extracts nothing parses as an empty document in an
+          # applicant tracking system. This has happened once already.
+          if [ "$words" -lt 200 ]; then
+            echo "::error::$pdf extracts only $words words — it is probably corrupt"
+            exit 1
+          fi
