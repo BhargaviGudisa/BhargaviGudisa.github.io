@@ -65,6 +65,14 @@ with `profile-sm.webp` (340×425) served to narrow viewports through `srcset`.
 `profile-source.png` is the full-resolution original — gitignored, kept locally so the crop
 can be redone without re-exporting.
 
+## Résumé
+
+`resume/Bhargavi-Gudisa-Resume.tex` is the source for `Bhargavi-Gudisa-Resume.pdf`.
+Compile with pdfLaTeX; the easiest route is to upload the `.tex` to Overleaf, which has
+every package it uses. Search the file for `TODO` — those are values only Bhargavi can
+supply (city, bachelor’s degree, M.S. start date, credential links). Recompile and
+replace the PDF in the repository root when it changes.
+
 ## Deployment
 
 GitHub Pages. Push to the default branch of `BhargaviGudisa/BhargaviGudisa.github.io`, then

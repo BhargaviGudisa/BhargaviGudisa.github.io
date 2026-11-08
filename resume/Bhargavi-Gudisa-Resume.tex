@@ -1,0 +1,301 @@
+%==============================================================================
+%  Bhargavi Gudisa — Résumé
+%
+%  Compile with pdflatex (Overleaf: "pdfLaTeX"). One column, selectable text,
+%  no graphics and no text inside tables that carries meaning, so applicant
+%  tracking systems parse it the same way a human reads it.
+%
+%  Everything you are likely to edit is in the PERSONAL DETAILS block below.
+%  Lines marked  % TODO  need a real value before you send this out.
+%
+%  FITTING: this should land on two pages. If it spills onto a third, cut in
+%  this order — the goal is two full pages, never two and a bit:
+%    1. the Permit Request Tracker project (weakest of the four, no link yet)
+%    2. the last two Wipro bullets (oldest role, least relevant to cloud work)
+%    3. the "Practice" skills row
+%  If instead you want one page for a competitive SWE req, keep Lumin's first
+%  four bullets, FAU's first three, one line for Wipro, and two projects.
+%==============================================================================
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{charter}                 % readable serif; ships with every TeX distro
+\usepackage{microtype}
+\usepackage[top=0.5in,bottom=0.5in,left=0.55in,right=0.55in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage[colorlinks=true,urlcolor=linkblue,linkcolor=linkblue]{hyperref}
+
+\definecolor{linkblue}{HTML}{1A4F8A}
+\definecolor{rulegray}{HTML}{333333}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\raggedbottom
+\raggedright
+
+%--- Section headings ---------------------------------------------------------
+\titleformat{\section}
+  {\normalsize\bfseries\scshape\color{rulegray}}
+  {}{0em}{}
+  [\vspace{-7pt}\color{rulegray}\rule{\linewidth}{0.7pt}\vspace{-3pt}]
+\titlespacing*{\section}{0pt}{9pt}{5pt}
+
+%--- Bullets ------------------------------------------------------------------
+\newenvironment{bullets}
+  {\begin{itemize}[leftmargin=1.15em,labelsep=0.45em,itemsep=1.3pt,
+                   topsep=2.5pt,parsep=0pt,partopsep=0pt,label=\textbullet]}
+  {\end{itemize}\vspace{1pt}}
+
+%--- One experience / education entry: {left}{right}{sub-left}{sub-right} ------
+\newcommand{\entry}[4]{%
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & #2 \\
+    \textit{#3} & \textit{#4} \\
+  \end{tabularx}%
+  \vspace{-3pt}
+}
+
+%--- A project line: {name}{stack}{links} -------------------------------------
+\newcommand{\project}[3]{%
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1}~~\textbar{}~~\textit{\small #2} & \small #3 \\
+  \end{tabularx}%
+  \vspace{-3pt}
+}
+
+%==============================================================================
+%  PERSONAL DETAILS — edit here
+%==============================================================================
+% NOTE: each link is defined as a complete \href. Do not split the URL into its
+% own \newcommand — hyperref reads the URL argument with special catcodes and
+% does not reliably expand macros inside it.
+\newcommand{\myname}{Bhargavi Gudisa}
+\newcommand{\mytitle}{Software Engineer \textemdash{} Cloud Infrastructure \& AI Quality}
+
+\newcommand{\myphone}{\href{tel:+15619870286}{(561) 987-0286}}
+\newcommand{\myemail}{\href{mailto:bhargavi4044g@gmail.com}{bhargavi4044g@gmail.com}}
+
+% TODO: a city and state beats "United States". Recruiters and ATS both filter
+% on location, and "United States" reads as hiding something. Your 561 area code
+% and FAU both point to South Florida — confirm and set it.
+\newcommand{\mylocation}{Boca Raton, FL}
+
+\newcommand{\mysite}{\href{https://bhargavigudisa.github.io}{bhargavigudisa.github.io}}
+\newcommand{\mylinkedin}{\href{https://www.linkedin.com/in/bhargavi-gudisa-a2b05021b/}{linkedin.com/in/bhargavi-gudisa-a2b05021b}}
+\newcommand{\mygithub}{\href{https://github.com/BhargaviGudisa}{github.com/BhargaviGudisa}}
+
+\newcommand{\sep}{~~\textbullet~~}
+
+%==============================================================================
+\begin{document}
+
+%--- HEADER -------------------------------------------------------------------
+\begin{center}
+  {\LARGE\bfseries\myname}\\[3pt]
+  {\small\mytitle}\\[5pt]
+  {\small
+    \myphone\sep\myemail\sep\mylocation\\[2.5pt]
+    \mysite\sep\mylinkedin\sep\mygithub
+  }
+\end{center}
+\vspace{-4pt}
+
+%--- SUMMARY ------------------------------------------------------------------
+\section{Summary}
+
+Software engineer with 5 years across the US and India building cloud
+infrastructure and the quality systems that run on top of it. Provisions GCP and
+Azure environments with Terraform, packages Python and Bash pipelines into Docker
+on Linux, and runs AI response evaluation with human-in-the-loop review and
+root-cause routing so each failure reaches the one team that can fix it. M.S. in
+Computer and Information Sciences, Florida Atlantic University (GPA 3.86).
+
+%--- SKILLS -------------------------------------------------------------------
+\section{Skills}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}l X@{}}
+  Infrastructure \& Cloud~ & Terraform, Docker, Infrastructure as Code (IaC),
+    GCP (Cloud Functions, Cloud Storage, Compute Engine), Microsoft Azure
+    (Data Factory, Synapse, App Service), Linux, Git, GitHub \\[2.5pt]
+  Languages & Python, Bash, SQL (T-SQL), C\#, JavaScript \\[2.5pt]
+  Data \& Reporting & Microsoft SQL Server, Azure SQL Database, Oracle PL/SQL,
+    ETL, pandas, relational data modeling, indexing and query tuning,
+    Power BI, Tableau, DAX, SSRS \\[2.5pt]
+  AI \& Integration & AI quality evaluation, human-in-the-loop review, Microsoft
+    Copilot Studio, REST APIs, Workato, Make, n8n, Power Automate,
+    SharePoint Online \\[2.5pt]
+  Practice & SDLC, Agile, design and code reviews, test planning, data migration
+    and conversion, technical documentation, Jira, Asana \\
+\end{tabularx}
+
+%--- EXPERIENCE ---------------------------------------------------------------
+\section{Experience}
+
+\entry{Software Engineer}{May 2025 \textendash{} Present}
+      {Lumin Innovations}{Remote, United States}  % TODO confirm location
+\begin{bullets}
+  \item Built a Python and Bash ingestion application, packaged it in Docker, and
+        provisioned its GCP storage and compute with Terraform, so every Linux
+        environment runs the same version-controlled build.
+  \item Set up knowledge-base governance with an owner per content area and
+        Jira-tracked reviews each release; automated Bash audits route 200+ stale
+        entries a month to their owners and cut staleness by 45\%.
+  \item Built Python and Bash tooling that analyzed 5,000+ AI-generated chat
+        responses, flagging quality gaps at 98\% accuracy in remediation reports
+        engineers used to prioritize fixes.
+  \item Designed a root-cause process separating content gaps from prompt-handling
+        failures, so engineers check one cause per failure instead of both;
+        debugging time fell 30\%.
+  \item Evaluated, configured, and integrated SaaS automation platforms (Workato,
+        Make, n8n) into content and training workflows, replacing manual handoffs
+        between teams with automated triggers.
+  \item Reported AI accuracy and adoption to executives monthly through Tableau
+        dashboards and set cross-functional priorities in Asana; response
+        precision rose 25\%.
+\end{bullets}
+
+\entry{Systems Analyst}{Aug 2024 \textendash{} May 2025}
+      {Florida Atlantic University}{Boca Raton, FL}
+\begin{bullets}
+  \item Designed a layered GCP ingestion system with Cloud Functions and Terraform
+        that separated collection, processing, and storage, making new data
+        sources quick to onboard.
+  \item Deployed the pipeline in Docker on Linux virtual machines and optimized its
+        Bash metadata extraction scripts, keeping development and production
+        consistent and cutting environment-specific failures.
+  \item Defined quality criteria for AI system responses and built a 500+ case
+        edge-case test dataset, giving each release a repeatable, traceable test
+        baseline.
+  \item Worked with documentation owners in Jira to fix low-confidence knowledge
+        articles, raising search success 18\%; content audits cut outdated entries
+        40\% and saved about 15 hours of manual review a week.
+  \item Ran cross-team workshops to align system output with institutional policy,
+        reducing policy-related escalations by 22\%.
+\end{bullets}
+
+\entry{Project Engineer}{Jan 2021 \textendash{} Oct 2023}
+      {Wipro Limited}{India}  % TODO add the city (Hyderabad? Bangalore?)
+\begin{bullets}
+  \item Containerized the QA framework with Docker and extended Terraform
+        configurations for GCP, cutting manual setup as test volume grew and
+        speeding developer onboarding.
+  \item Migrated data processing scripts to Bash on Linux servers, making them
+        portable across environments and laying the base for later GCP pipelines.
+  \item Ran automated test execution and pre-release validation across the SDLC,
+        and joined engineers in design and code reviews to check changes against
+        quality specifications.
+  \item Reviewed chatbot replies as the human check on AI output, flagging
+        inaccurate information to protect data integrity across the conversational
+        platform.
+  \item Coordinated sprint planning in Jira and Asana across global teams in
+        multiple time zones, and built Tableau dashboards that gave leadership one
+        view of program performance.
+\end{bullets}
+
+%--- PROJECTS -----------------------------------------------------------------
+\section{Projects}
+
+% The live demo goes first on purpose: it is the one a reader can verify in
+% ten seconds without taking your word for anything.
+\project{Review Sentiment \& Competitor Radar}
+        {Python, Streamlit, Plotly, pandas, SQLite, VADER}
+        {\href{https://github.com/BhargaviGudisa/review-sentiment-radar}{Code}~~\textbar{}~~\href{https://review-sentiment-radar-iyxpjovmbfqcbyeuzk3ifs.streamlit.app/}{Live demo}}
+\begin{bullets}
+  \item Built an aspect-based sentiment pipeline over the Yelp Open Dataset
+        (6.99M reviews) that scores a business against five nearby competitors
+        across six service aspects, rather than collapsing reviews to one number.
+  \item Scored sentiment per sentence so a single review can praise the coffee and
+        damn the wait without the two cancelling out; chose VADER and keyword
+        matching over an LLM for cost, speed, and explainability.
+  \item Shipped a Streamlit dashboard with radar comparison and automated gap
+        analysis, surfacing the three aspects where the business trails most.
+\end{bullets}
+
+\project{Record Retention Advisor}
+        {Microsoft Copilot Studio, Microsoft 365}
+        {Town of Morrisville, NC}
+\begin{bullets}
+  \item Built a Copilot Studio agent that answers Town staff questions on how long
+        to keep municipal records and how to handle them when retention ends.
+  \item Grounded the agent in the Town's own retention schedule through knowledge
+        sources and topics, replacing manual schedule lookups with a conversational
+        interface inside Microsoft 365.
+  \item Made every answer cite its schedule entry, so staff verify against the
+        source before acting \textemdash{} destroying a record early is not a
+        recoverable mistake.
+\end{bullets}
+
+% TODO: publish this repo, then replace the {} below with:
+%   {\href{https://github.com/BhargaviGudisa/coffee-quality-pipeline}{Code}}
+% Until it exists, the "published to GitHub" claim in the last bullet is not
+% checkable, which is worse than not making it.
+\project{Coffee Sensory Quality Data Pipeline}
+        {Python, pandas, Azure SQL Database, Power BI}
+        {}
+\begin{bullets}
+  \item Built a Python pipeline that cleans the public Coffee Quality Institute
+        dataset (1,300+ Arabica cupping reviews), applies named quality rules, and
+        loads it into Azure SQL Database.
+  \item Logged every rejected record with the rule it failed, so each loaded score
+        traces back to its source row and no record drops silently.
+  \item Published the data lineage and a data dictionary so other analysts can
+        reuse the model rather than re-derive it.
+\end{bullets}
+
+% TODO: same as above —
+%   {\href{https://github.com/BhargaviGudisa/permit-request-tracker}{Code}}
+\project{Permit Request Tracker}
+        {C\#, ASP.NET Core MVC, Entity Framework Core, SQL Server, Azure App Service}
+        {}
+\begin{bullets}
+  \item Built a web application where staff log, assign, and close permit requests,
+        modelled with Entity Framework Core over a normalized SQL Server schema.
+  \item Wrote a T-SQL conversion script migrating legacy CSV records, coercing dates
+        safely and refusing unparseable rows instead of inserting nulls.
+  \item Chose indexes from before-and-after execution plans rather than intuition,
+        and deployed to Azure App Service.
+\end{bullets}
+
+%--- EDUCATION ----------------------------------------------------------------
+\section{Education}
+
+% TODO: add the start date. Right now the résumé shows Wipro ending Oct 2023 and
+% FAU starting Aug 2024, with nothing in between — a reader sees a 10-month gap.
+% The M.S. start date closes it. Replace "Jan 2024" with your actual start.
+\entry{M.S., Computer and Information Sciences \textemdash{} GPA 3.86}
+      {Jan 2024 \textendash{} Dec 2025}
+      {Florida Atlantic University}{Boca Raton, FL}
+\vspace{2pt}
+
+Relevant coursework: Cloud Computing, Database Systems, Big Data Analytics,
+Machine Learning, Data Mining, Data Visualization.
+\vspace{4pt}
+
+% TODO: your bachelor's degree is missing entirely. Add it — a résumé showing a
+% master's and three years at Wipro with no undergraduate degree reads as an
+% omission, and some ATS screens require one. Fill in the real values.
+\entry{B.Tech / B.E., [Your Major]}{[Year] \textendash{} [Year]}
+      {[University Name]}{[City], India}
+
+%--- CERTIFICATIONS -----------------------------------------------------------
+\section{Certifications \& Publications}
+
+\begin{bullets}
+  \item \textbf{Microsoft Certified: Azure Fundamentals (AZ-900)} \textemdash{}
+        Microsoft.
+        % TODO: paste your Credly / Microsoft Learn verification URL here, e.g.
+        % \href{https://learn.microsoft.com/api/credentials/share/...}{Verify}
+  \item \textbf{Programming Essentials in Python} \textemdash{} Statement of
+        Achievement, Cisco Networking Academy.  % TODO confirm the issuer
+  \item \textbf{Hybrid model of a passive aggressive classifier machine learning
+        approach to fake news detection} \textemdash{} Springer.
+        % TODO: add the publication year and a DOI link. A cited paper a reader
+        % cannot find does less for you than one they can open:
+        % \href{https://doi.org/XX.XXXX/XXXXXX}{DOI}
+\end{bullets}
+
+\end{document}
