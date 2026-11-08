@@ -70,7 +70,7 @@ can be redone without re-exporting.
 `resume/Bhargavi-Gudisa-Resume.tex` is the source for `Bhargavi-Gudisa-Resume.pdf`.
 Compile with pdfLaTeX; the easiest route is to upload the `.tex` to Overleaf, which has
 every package it uses. Search the file for `TODO` — those are values only Bhargavi can
-supply (city, bachelor’s degree, M.S. start date, credential links). Recompile and
+supply (city, M.S. start date, Wipro city, credential and DOI links). Recompile and
 replace the PDF in the repository root when it changes.
 
 ## Deployment
